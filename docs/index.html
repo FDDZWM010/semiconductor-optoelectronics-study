@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="《半导体光电子学（第3版）》按章节整理的变量、定义、单位、关系式与页码索引。">
+  <title>半导体光电子学 · 变量导航</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%2308172d'/%3E%3Cpath d='M12 19h17l7 8h16M12 45h17l7-8h16' fill='none' stroke='%2368e4ff' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M32 17v30' stroke='%23ffbe55' stroke-width='3' stroke-dasharray='4 4'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111f;
+      --bg-2: #0a1728;
+      --panel: #0d1b2f;
+      --panel-2: #10223a;
+      --line: #203752;
+      --line-2: #2c4b6c;
+      --text: #eef7ff;
+      --muted: #98aec4;
+      --soft: #c6d5e3;
+      --cyan: #68e4ff;
+      --cyan-2: #1fb9db;
+      --amber: #ffbe55;
+      --violet: #9c91ff;
+      --red: #ff788a;
+      --green: #6ee7b7;
+      --shadow: 0 24px 64px rgba(0, 0, 0, .25);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 82% -10%, rgba(31,185,219,.12), transparent 31rem),
+        linear-gradient(180deg, #07111f 0%, #081523 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+    .skip-link {
+      position: fixed; left: 1rem; top: -5rem; z-index: 100;
+      padding: .65rem 1rem; background: var(--cyan); color: #04101e; border-radius: 8px;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 40;
+      min-height: 72px;
+      display: grid; grid-template-columns: minmax(240px, 360px) minmax(280px, 720px) auto;
+      align-items: center; gap: 1rem;
+      padding: .75rem clamp(1rem, 2.4vw, 2rem);
+      background: rgba(7,17,31,.88);
+      border-bottom: 1px solid rgba(104,228,255,.16);
+      backdrop-filter: blur(18px);
+    }
+    .brand { display: flex; align-items: center; gap: .78rem; min-width: 0; }
+    .brand-mark {
+      width: 42px; height: 42px; flex: 0 0 auto; border: 1px solid var(--line-2); border-radius: 11px;
+      display: grid; place-items: center; background: linear-gradient(145deg,#102a46,#09172a); box-shadow: inset 0 0 22px rgba(104,228,255,.07);
+    }
+    .brand-mark svg { width: 30px; height: 30px; }
+    .brand-copy { min-width: 0; }
+    .brand-copy strong { display: block; font-size: 1rem; line-height: 1.25; letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .brand-copy span { display: block; color: var(--muted); font-size: .78rem; line-height: 1.3; }
+
+    .search-wrap { position: relative; }
+    .search-icon { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); color: var(--cyan); pointer-events: none; }
+    #searchInput {
+      width: 100%; height: 48px; padding: 0 7.8rem 0 2.8rem;
+      color: var(--text); background: #0b1b2e; border: 1px solid var(--line-2); border-radius: 12px; outline: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+    }
+    #searchInput::placeholder { color: #7690a8; }
+    #searchInput:focus { border-color: var(--cyan-2); box-shadow: 0 0 0 3px rgba(31,185,219,.13); }
+    .search-scope {
+      position: absolute; right: .42rem; top: 50%; transform: translateY(-50%);
+      border: 1px solid var(--line); background: #10243a; color: var(--soft); border-radius: 8px;
+      min-width: 6.7rem; height: 36px; padding: 0 .7rem; cursor: pointer; font-size: .82rem;
+    }
+    .top-actions { display: flex; align-items: center; gap: .55rem; }
+    .icon-button, .ghost-button {
+      border: 1px solid var(--line); background: var(--panel); border-radius: 10px; cursor: pointer;
+      min-height: 42px; padding: .55rem .8rem;
+    }
+    .icon-button { display: none; width: 42px; padding: 0; place-items: center; }
+    .ghost-button:hover, .icon-button:hover { border-color: var(--cyan-2); background: var(--panel-2); }
+    .kbd { border: 1px solid var(--line); border-bottom-color: #3d5d7e; background: #0a1728; color: var(--muted); border-radius: 5px; padding: .04rem .35rem; font-size: .74rem; }
+
+    .app-layout {
+      display: grid; grid-template-columns: 286px minmax(0, 1fr);
+      min-height: calc(100vh - 72px);
+    }
+    .sidebar {
+      position: sticky; top: 72px; align-self: start; height: calc(100vh - 72px); overflow-y: auto;
+      border-right: 1px solid var(--line); background: rgba(8,21,35,.72);
+      padding: 1.2rem .85rem 2rem;
+      scrollbar-color: var(--line-2) transparent;
+    }
+    .side-label { padding: 0 .65rem .55rem; color: #6f8ba7; font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; }
+    .chapter-nav { display: grid; gap: .32rem; }
+    .chapter-button {
+      width: 100%; display: grid; grid-template-columns: 2.1rem minmax(0,1fr) auto; align-items: center; gap: .55rem;
+      text-align: left; border: 1px solid transparent; background: transparent; color: var(--soft); border-radius: 10px;
+      padding: .62rem .62rem; cursor: pointer;
+    }
+    .chapter-button:hover { background: rgba(104,228,255,.055); border-color: rgba(104,228,255,.12); }
+    .chapter-button[aria-current="page"] { background: linear-gradient(90deg, rgba(31,185,219,.15), rgba(31,185,219,.035)); border-color: rgba(104,228,255,.27); color: white; }
+    .chapter-number {
+      width: 2rem; height: 2rem; display: grid; place-items: center; border-radius: 8px;
+      background: #0a1829; border: 1px solid var(--line); color: var(--cyan); font-size: .78rem; font-weight: 700;
+    }
+    .chapter-title { min-width: 0; }
+    .chapter-title strong { display: block; font-size: .88rem; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .chapter-title small { color: var(--muted); font-size: .73rem; }
+    .chapter-count { color: #7891a9; font-variant-numeric: tabular-nums; font-size: .74rem; }
+    .sidebar-note { margin: 1.25rem .55rem 0; padding: .85rem; color: var(--muted); background: rgba(16,34,58,.58); border: 1px solid var(--line); border-radius: 11px; font-size: .78rem; }
+    .sidebar-note strong { color: var(--soft); }
+
+    main { min-width: 0; padding: clamp(1.2rem, 3vw, 2.5rem); }
+    .chapter-header {
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: minmax(0,1fr) minmax(250px, 360px); gap: 2rem; align-items: end;
+      border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(135deg, #10243a 0%, #0b1a2d 58%, #0b2137 100%);
+      padding: clamp(1.25rem, 3vw, 2.1rem); box-shadow: var(--shadow);
+    }
+    .chapter-header::after {
+      content: ""; position: absolute; inset: auto -8rem -12rem auto; width: 24rem; height: 24rem; border-radius: 50%;
+      background: radial-gradient(circle, rgba(104,228,255,.13), transparent 68%); pointer-events: none;
+    }
+    .eyebrow { margin: 0 0 .4rem; color: var(--cyan); font-size: .78rem; letter-spacing: .13em; text-transform: uppercase; }
+    .chapter-header h1 { margin: 0; max-width: 860px; font-size: clamp(1.65rem, 3vw, 2.5rem); line-height: 1.22; letter-spacing: -.025em; }
+    .chapter-summary { max-width: 780px; margin: .8rem 0 0; color: var(--soft); }
+    .page-range { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1rem; color: var(--muted); font-size: .83rem; }
+    .page-range::before { content: ""; width: 1.4rem; height: 1px; background: var(--amber); }
+
+    .band-map { position: relative; z-index: 1; border-left: 1px solid var(--line-2); padding-left: 1.5rem; }
+    .band-map svg { width: 100%; height: 118px; display: block; }
+    .band-map-caption { display: flex; justify-content: space-between; color: var(--muted); font-size: .74rem; }
+    .stats-row { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1rem; }
+    .stat-chip { border: 1px solid var(--line); background: rgba(6,17,31,.45); border-radius: 999px; padding: .3rem .62rem; color: var(--soft); font-size: .78rem; }
+    .stat-chip b { color: var(--cyan); }
+
+    .chains {
+      display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .7rem; margin: 1rem 0 0;
+    }
+    .chain-button {
+      min-width: 0; text-align: left; border: 1px solid var(--line); background: rgba(13,27,47,.72); border-radius: 11px;
+      padding: .8rem .9rem; cursor: pointer;
+    }
+    .chain-button:hover { border-color: var(--cyan-2); transform: translateY(-1px); }
+    .chain-button span { display: block; color: var(--cyan); font-family: "Cambria Math", "STIX Two Math", serif; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .chain-button small { color: var(--muted); }
+
+    .workspace-bar {
+      position: sticky; top: 72px; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      margin: 1.15rem 0 .8rem; padding: .75rem .1rem;
+      background: linear-gradient(180deg, rgba(7,17,31,.97) 70%, rgba(7,17,31,0));
+    }
+    .results-copy { color: var(--soft); font-size: .9rem; }
+    .results-copy b { color: var(--cyan); font-variant-numeric: tabular-nums; }
+    .filter-row { display: flex; align-items: center; gap: .45rem; overflow-x: auto; padding: .1rem; scrollbar-width: none; }
+    .filter-row::-webkit-scrollbar { display: none; }
+    .filter-button {
+      flex: 0 0 auto; border: 1px solid var(--line); background: #0b192b; color: var(--muted); border-radius: 999px;
+      padding: .42rem .75rem; cursor: pointer; font-size: .8rem;
+    }
+    .filter-button:hover, .filter-button[aria-pressed="true"] { border-color: var(--cyan-2); color: white; background: rgba(31,185,219,.13); }
+    .filter-button.conflict[aria-pressed="true"] { border-color: var(--amber); background: rgba(255,190,85,.12); }
+
+    .section-jump { display: flex; gap: .45rem; overflow-x: auto; margin: 0 0 1rem; padding-bottom: .25rem; scrollbar-color: var(--line) transparent; }
+    .section-jump button { flex: 0 0 auto; border: 0; border-bottom: 1px solid var(--line-2); background: transparent; color: var(--muted); padding: .35rem .15rem; cursor: pointer; font-size: .8rem; }
+    .section-jump button:hover { color: var(--cyan); border-color: var(--cyan); }
+
+    .variable-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: .85rem; }
+    .variable-card {
+      scroll-margin-top: 150px;
+      display: flex; flex-direction: column; min-width: 0;
+      border: 1px solid var(--line); background: linear-gradient(155deg, rgba(15,32,54,.98), rgba(10,24,41,.98));
+      border-radius: var(--radius); overflow: hidden;
+      transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+    }
+    .variable-card:hover { transform: translateY(-2px); border-color: #356181; box-shadow: 0 14px 28px rgba(0,0,0,.18); }
+    .card-top { display: grid; grid-template-columns: minmax(72px,auto) minmax(0,1fr); gap: 1rem; padding: 1rem 1rem .72rem; }
+    .symbol {
+      align-self: start; min-width: 72px; min-height: 54px; display: grid; place-items: center;
+      padding: .45rem .6rem; border: 1px solid rgba(104,228,255,.2); border-radius: 10px;
+      background: rgba(104,228,255,.055); color: #bdf4ff;
+      font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif; font-size: 1.3rem; line-height: 1.2; text-align: center;
+    }
+    .symbol sub, .symbol sup { font-size: .65em; }
+    .variable-title { min-width: 0; }
+    .variable-title h2 { margin: 0; font-size: 1rem; line-height: 1.35; }
+    .variable-title p { margin: .2rem 0 0; color: var(--muted); font-size: .78rem; line-height: 1.4; }
+    .badges { display: flex; flex-wrap: wrap; gap: .34rem; margin-top: .45rem; }
+    .badge { border: 1px solid var(--line); border-radius: 999px; padding: .12rem .44rem; color: #9fb5c9; font-size: .68rem; line-height: 1.45; }
+    .badge.ambiguous { border-color: rgba(255,190,85,.35); background: rgba(255,190,85,.08); color: #ffd993; }
+    .definition { margin: 0; padding: 0 1rem .9rem; color: var(--soft); font-size: .9rem; }
+    .relation { margin: 0 1rem .85rem; padding: .62rem .75rem; border-left: 2px solid var(--cyan-2); background: rgba(4,15,28,.5); color: #d9f6ff; font-family: "Cambria Math", "STIX Two Math", serif; font-size: .88rem; overflow-wrap: anywhere; }
+    .card-footer { margin-top: auto; display: flex; justify-content: space-between; gap: .65rem; border-top: 1px solid rgba(44,75,108,.55); padding: .66rem 1rem; color: var(--muted); font-size: .74rem; }
+    .location { color: #a9bfd2; }
+    .unit { text-align: right; }
+    .variable-card mark { background: rgba(255,190,85,.22); color: #fff2cf; border-radius: 3px; padding: 0 .08em; }
+
+    .empty-state { display: none; text-align: center; border: 1px dashed var(--line-2); border-radius: 15px; padding: 3rem 1rem; color: var(--muted); }
+    .empty-state strong { display: block; color: var(--text); font-size: 1.1rem; margin-bottom: .35rem; }
+    .empty-state button { margin-top: .85rem; border: 1px solid var(--line-2); background: var(--panel); color: var(--cyan); border-radius: 9px; padding: .5rem .8rem; cursor: pointer; }
+    .source-note { margin: 1.3rem 0 0; padding: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
+    .source-note b { color: var(--soft); }
+    .drawer-scrim { display: none; position: fixed; inset: 72px 0 0; z-index: 29; background: rgba(0,0,0,.55); }
+    .toast { position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 80; padding: .65rem .9rem; border: 1px solid var(--line-2); background: #10243a; color: var(--text); border-radius: 9px; box-shadow: var(--shadow); opacity: 0; transform: translateY(10px); pointer-events: none; transition: .2s ease; font-size: .85rem; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1040px) {
+      .topbar { grid-template-columns: auto minmax(260px,1fr) auto; }
+      .brand-copy span { display: none; }
+      .app-layout { grid-template-columns: 240px minmax(0,1fr); }
+      .chains { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .chapter-header { grid-template-columns: 1fr; }
+      .band-map { display: none; }
+    }
+    @media (max-width: 760px) {
+      .topbar { grid-template-columns: auto minmax(0,1fr) auto; padding: .65rem .75rem; }
+      .brand-copy { display: none; }
+      .top-actions .ghost-button { display: none; }
+      .icon-button { display: grid; }
+      #searchInput { padding-right: 2.7rem; }
+      .search-scope { width: 34px; min-width: 34px; overflow: hidden; color: transparent; padding: 0; }
+      .search-scope::after { content: "全"; color: var(--cyan); position: absolute; inset: 0; display: grid; place-items: center; }
+      .search-scope[data-scope="chapter"]::after { content: "章"; }
+      .app-layout { display: block; }
+      .sidebar { position: fixed; z-index: 30; top: 72px; left: 0; width: min(88vw, 310px); transform: translateX(-105%); transition: transform .2s ease; box-shadow: var(--shadow); }
+      body.nav-open .sidebar { transform: translateX(0); }
+      body.nav-open .drawer-scrim { display: block; }
+      main { padding: 1rem .85rem 2rem; }
+      .chapter-header { border-radius: 14px; padding: 1.15rem; }
+      .chapter-header h1 { font-size: 1.55rem; }
+      .chains { grid-template-columns: 1fr 1fr; }
+      .workspace-bar { top: 72px; align-items: flex-start; flex-direction: column; gap: .55rem; padding-top: .65rem; }
+      .filter-row { width: 100%; }
+      .variable-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 430px) {
+      .chains { grid-template-columns: 1fr; }
+      .card-top { grid-template-columns: 68px minmax(0,1fr); gap: .75rem; }
+      .symbol { min-width: 68px; font-size: 1.15rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">跳到变量列表</a>
+  <header class="topbar">
+    <div class="brand" aria-label="半导体光电子学变量导航">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40"><path d="M4 10h12l5 6h15M4 30h12l5-6h15" fill="none" stroke="#68e4ff" stroke-width="2.5" stroke-linecap="round"/><path d="M20 7v26" stroke="#ffbe55" stroke-width="2" stroke-dasharray="3 3"/></svg>
+      </div>
+      <div class="brand-copy"><strong>半导体光电子学 · 变量导航</strong><span>第 3 版 · 章节索引与全书搜索</span></div>
+    </div>
+    <div class="search-wrap" role="search">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="searchInput" type="search" autocomplete="off" spellcheck="false" aria-label="搜索全书变量" placeholder="搜符号、中文、英文、公式或章节，例如 Eg / 量子效率 / APD">
+      <button id="scopeButton" class="search-scope" type="button" data-scope="all" aria-label="切换搜索范围">全书搜索</button>
+    </div>
+    <div class="top-actions">
+      <button id="menuButton" class="icon-button" type="button" aria-label="打开章节导航" aria-expanded="false">☰</button>
+      <button id="focusSearch" class="ghost-button" type="button">快速搜索 <span class="kbd">/</span></button>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar" aria-label="章节导航">
+      <div class="side-label">Book map</div>
+      <nav id="chapterNav" class="chapter-nav"></nav>
+      <div class="sidebar-note"><strong>页码说明</strong><br>卡片中的“书 P”是印刷页码；扫描 PDF 前置页共 11 页，因此 PDF 页码 = 书页 + 11。</div>
+    </aside>
+
+    <main id="mainContent" tabindex="-1">
+      <section id="chapterHeader" class="chapter-header" aria-labelledby="chapterTitle"></section>
+      <section class="chains" aria-label="常用关系链">
+        <button class="chain-button" data-chain="jng"><span>J → n → g</span><small>电流到材料增益</small></button>
+        <button class="chain-button" data-chain="eglambda"><span>E<sub>g</sub> ↔ hν ↔ λ</span><small>带隙与发光波长</small></button>
+        <button class="chain-button" data-chain="waveguide"><span>n<sub>eff</sub> → β → mode</span><small>波导与模式</small></button>
+        <button class="chain-button" data-chain="responsivity"><span>η → ℜ</span><small>量子效率到响应度</small></button>
+      </section>
+
+      <section class="workspace-bar" aria-label="结果筛选">
+        <div id="resultsCopy" class="results-copy" aria-live="polite"></div>
+        <div id="filterRow" class="filter-row"></div>
+      </section>
+      <nav id="sectionJump" class="section-jump" aria-label="本章小节"></nav>
+      <section id="variableGrid" class="variable-grid" aria-label="变量列表"></section>
+      <section id="emptyState" class="empty-state">
+        <strong>没有找到匹配变量</strong>
+        <span>可以改搜中文含义、英文名称或不带下标的符号。</span><br>
+        <button id="clearSearch" type="button">清除搜索</button>
+      </section>
+      <footer class="source-note"><b>整理依据：</b>《半导体光电子学（第 3 版）》目录、正文变量首次定义与主要关系式。变量按本书语境归并；同一符号在不同章节含义不同时保留为独立条目并标注“一符多义”。</footer>
+    </main>
+  </div>
+  <div id="drawerScrim" class="drawer-scrim" aria-hidden="true"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const CHAPTERS = [
+      {id:"all", short:"总", title:"全书总览", range:"印刷页 1–310", pdf:"PDF 12–321", summary:"跨章节检索变量、定义、单位和主要关系式；输入符号、中文名称、英文名称或器件缩写均可。"},
+      {id:"common", short:"常", title:"全书常用量与常数", range:"贯穿全书", pdf:"", summary:"跨章节反复使用的基本常数、光子量和电磁量。各章中的专用含义仍在对应章节单独列出。"},
+      {id:"1", short:"01", title:"半导体中光子–电子的相互作用", range:"印刷页 4–43", pdf:"PDF 15–54", summary:"从能带跃迁、态密度和占据几率出发，建立自发发射、受激发射、吸收、复合以及增益与电流密度之间的关系。"},
+      {id:"2", short:"02", title:"异质结", range:"印刷页 44–70", pdf:"PDF 55–81", summary:"描述能带不连续、晶格匹配、载流子限制与漏电流，并把材料组分、折射率和器件设计连接起来。"},
+      {id:"3", short:"03", title:"平板介质光波导理论", range:"印刷页 72–96", pdf:"PDF 83–107", summary:"由麦克斯韦方程推导传播常数、TE/TM 模、本征方程、全反射、倏逝场和有效折射率。"},
+      {id:"4", short:"04", title:"异质结半导体激光器", range:"印刷页 97–136", pdf:"PDF 108–147", summary:"涵盖阈值与谐振腔、条形波导、增益导引、VCSEL、DBR 和 DFB 耦合波方程。"},
+      {id:"5", short:"05", title:"半导体激光器的性能", range:"印刷页 137–176", pdf:"PDF 148–187", summary:"汇总阈值、效率、远场、模式、线宽、速率方程、调制响应以及寿命和退化参数。"},
+      {id:"6", short:"06", title:"低维量子半导体材料", range:"印刷页 178–199", pdf:"PDF 189–210", summary:"比较量子阱、量子线和量子点中的量子化能级、维度态密度、激子、应变和激光阈值。"},
+      {id:"7", short:"07", title:"半导体光放大器（SOA）", range:"印刷页 202–218", pdf:"PDF 213–229", summary:"围绕单程增益、饱和输出、增益压缩、噪声和 XGM/XPM 等全光处理建立变量索引。"},
+      {id:"8", short:"08", title:"可见光半导体发射材料和器件", range:"印刷页 219–234", pdf:"PDF 230–245", summary:"用带隙、组分、晶格与弯曲因子连接红光、蓝绿光材料体系及可见光器件性能。"},
+      {id:"9", short:"09", title:"半导体中的光吸收和光探测器", range:"印刷页 236–271", pdf:"PDF 247–282", summary:"从直接/间接吸收到 PIN、APD、量子阱探测器和电吸收调制器，覆盖响应度、噪声与带宽。"},
+      {id:"10", short:"10", title:"半导体光电子器件集成", range:"印刷页 273–305", pdf:"PDF 284–316", summary:"包含集成工艺、微环、光子晶体、表面等离激元和超材料中的耦合、谐振与色散变量。"},
+      {id:"A", short:"A", title:"附录 A · 薛定谔方程与一维方势阱", range:"印刷页 306–309", pdf:"PDF 317–320", summary:"集中查询波函数、哈密顿量、概率密度、算符及有限深量子阱中的波数和衰减常数。"},
+      {id:"B", short:"B", title:"附录 B · 半导体的电子能带结构", range:"印刷页 310–315", pdf:"PDF 321–326", summary:"从晶格周期势和布洛赫波到倒格矢、布里渊区、能带指标与有效质量。"}
+    ];
+
+    const V = (chapter, section, page, symbol, name, english, definition, unit, relation, aliases, tags, conflict="", note="") => ({chapter, section, page, symbol, name, english, definition, unit, relation, aliases, tags, conflict, note});
+    const VARIABLES = [
+      V("common","常数",0,"h","普朗克常数","Planck constant","把光子频率换算成能量的基本常数。","J·s / eV·s","E = hν",["Planck","普朗克"],["基础","光子"]),
+      V("common","常数",0,"ℏ","约化普朗克常数","Reduced Planck constant","普朗克常数除以 2π，常用于角频率、动量和薛定谔方程。","J·s","ℏ = h/(2π)",["hbar","h-bar","约化普朗克"],["基础","量子"]),
+      V("common","常数",0,"q / e","元电荷","Elementary charge","电子电荷量的绝对值；电子本身带电 −q。","C","E(eV) ↔ qE(J)",["electron charge","电子电荷","单位电荷"],["基础","载流子"],"e"),
+      V("common","常数",0,"c","真空光速","Speed of light in vacuum","电磁波在真空中的传播速度。","m·s⁻¹","c = λ<sub>0</sub>ν",["光速","speed of light"],["基础","光场"]),
+      V("common","常数",0,"k<sub>B</sub>","玻尔兹曼常数","Boltzmann constant","把温度换算成热能尺度。","J·K⁻¹ / eV·K⁻¹","E<sub>thermal</sub> = k<sub>B</sub>T",["Boltzmann","玻尔兹曼","kB"],["基础","统计"],"k"),
+      V("common","常数",0,"ε<sub>0</sub>","真空介电常数","Vacuum permittivity","描述真空电场响应的常数。","F·m⁻¹","D = ε<sub>0</sub>E",["epsilon0","真空介电率"],["基础","电磁"]),
+      V("common","常数",0,"μ<sub>0</sub>","真空磁导率","Vacuum permeability","描述真空磁场响应的常数。","H·m⁻¹","c = 1/√(ε<sub>0</sub>μ<sub>0</sub>)",["mu0","真空磁导率"],["基础","电磁"]),
+      V("common","常数",0,"m<sub>0</sub>","自由电子质量","Free-electron mass","有效质量常以它为基准表示。","kg","m* = ξm<sub>0</sub>",["electron rest mass","电子静止质量","m0"],["基础","载流子"]),
+      V("common","光子",0,"ν, ω","频率与角频率","Frequency and angular frequency","ν 是每秒振荡次数，ω 是以弧度计的角频率。","Hz / rad·s⁻¹","ω = 2πν",["frequency","angular frequency","omega","频率"],["光子","光场"],"ω"),
+      V("common","光子",0,"λ<sub>0</sub>, λ","真空与介质波长","Vacuum and medium wavelength","λ₀ 为真空波长；介质折射率为 n 时波长缩短为 λ。","m / nm / μm","λ = λ<sub>0</sub>/n = c/(nν)",["wavelength","波长","lambda"],["光子","光场"],"λ"),
+
+      V("1","1.2",5,"E<sub>c</sub>, E<sub>v</sub>","导带底与价带顶","Conduction- and valence-band edges","电子带间跃迁的终态和初态能量边界。","eV","E<sub>g</sub> = E<sub>c</sub> − E<sub>v</sub>",["Ec","Ev","导带底","价带顶"],["能带","跃迁"],"E"),
+      V("1","1.2",5,"E<sub>g</sub>","禁带宽度","Band-gap energy","导带底和价带顶的能量差；直接决定吸收边和近似发光波长。","eV","E<sub>g</sub> ≈ hν = hc/λ",["Eg","band gap","bandgap","带隙","禁带"],["能带","跃迁"],"E"),
+      V("1","1.2",6,"k","电子波矢","Electron wave vector","描述布洛赫电子的准动量；直接跃迁近似要求初、终态波矢相同。","m⁻¹","p = ℏk",["wave vector","波矢","准动量"],["能带","跃迁"],"k"),
+      V("1","1.2",6,"p","电子动量 / 准动量","Electron momentum","与电子波矢相联系的动量量；晶体中常讨论守恒的准动量。","kg·m·s⁻¹","p = ℏk",["momentum","动量"],["跃迁","量子"],"p"),
+      V("1","1.2",6,"hν","光子能量","Photon energy","吸收或发射一个频率为 ν 的光子时交换的能量。","J / eV","E<sub>i</sub> − E<sub>f</sub> = hν",["photon energy","光子能量","hv"],["光子","跃迁"]),
+      V("1","1.2",7,"E<sub>ph</sub>, k<sub>ph</sub>","声子能量与波矢","Phonon energy and wave vector","间接带隙跃迁中由晶格振动提供或带走能量和准动量。","eV / m⁻¹","E<sub>i</sub> − E<sub>f</sub> = hν ± E<sub>ph</sub>",["phonon","声子","Ephonon","kphonon"],["声子","跃迁"],"k"),
+      V("1","1.2.2",8,"H<sub>0</sub>, H′","未扰动与相互作用哈密顿量","Unperturbed and interaction Hamiltonian","H₀ 描述无光场电子系统，H′ 描述辐射场引起的微扰。","J / eV","H = H<sub>0</sub> + H′",["Hamiltonian","哈密顿量","interaction"],["量子","跃迁"],"H"),
+      V("1","1.2.2",8,"A, A<sub>0</sub>","矢量势及其振幅","Vector potential and amplitude","用矢量势描述辐射场并构造电子–光场相互作用项。","V·s·m⁻¹","E = −∂A/∂t",["vector potential","矢量势"],["电磁","跃迁"],"A"),
+      V("1","1.2.2",9,"E<sub>0</sub>, H<sub>0</sub>","光场电场与磁场振幅","Electric and magnetic field amplitudes","描述平面电磁波强度的场振幅；此处 H₀ 是磁场量，不是哈密顿量。","V·m⁻¹ / A·m⁻¹","S = E × H",["field amplitude","电场强度","磁场强度"],["电磁","光场"],"E H","不要把磁场 H₀ 与同节的未扰动哈密顿量 H₀ 混淆。"),
+      V("1","1.2.2",9,"Φ<sub>ph</sub>","光子通量","Photon flux","单位面积、单位时间通过的光子数。","m⁻²·s⁻¹","I = hνΦ<sub>ph</sub>",["photon flux","光子流","光通量"],["光子","速率"],"Φ"),
+      V("1","1.2.2",9,"ψ<sub>c</sub>, ψ<sub>v</sub>","导带与价带波函数","Conduction- and valence-band wavefunctions","带间跃迁矩阵元中初态与终态的量子态。","m⁻³ᐟ²","ψ = u(r)e<sup>ik·r</sup>",["wavefunction","波函数","Bloch"],["量子","跃迁"],"ψ"),
+      V("1","1.2.2",10,"M<sub>cv</sub>","带间动量矩阵元","Interband momentum matrix element","衡量导带–价带光学跃迁的允许程度和耦合强度。","kg·m·s⁻¹","M<sub>cv</sub> = ⟨u<sub>c</sub>|p|u<sub>v</sub>⟩",["matrix element","矩阵元","momentum matrix"],["量子","跃迁"],"M"),
+      V("1","1.2.2",10,"W<sub>cv</sub>","带间跃迁几率","Interband transition probability","单位时间内由价带态跃迁到导带态或反向跃迁的概率。","s⁻¹","W<sub>cv</sub> ∝ |M<sub>cv</sub>|²",["transition probability","跃迁概率","Fermi golden rule"],["跃迁","速率"],"W"),
+      V("1","1.2.3",12,"a*","有效玻尔半径","Effective Bohr radius","浅杂质束缚态或弱束缚激子的特征空间尺度。","m / nm","a* ∝ ε<sub>r</sub>/(m*/m<sub>0</sub>)",["Bohr radius","玻尔半径","a star"],["杂质","量子"],"a"),
+      V("1","1.3",15,"ρ<sub>ph</sub>(ν)","光子态密度","Photon density of states","单位体积、单位频率或能量间隔内可用的光学模式数。","m⁻³·Hz⁻¹","ρ<sub>ph</sub>(ν) ∝ n³ν²/c³",["photon DOS","光子态密度","density of states"],["态密度","光子"],"ρ"),
+      V("1","1.3",16,"f<sub>BE</sub>","玻色–爱因斯坦分布","Bose–Einstein distribution","给出热平衡时每个光子模式的平均占据数。","1","f<sub>BE</sub> = 1/[exp(hν/k<sub>B</sub>T)−1]",["Bose Einstein","玻色爱因斯坦","光子分布"],["统计","光子"],"f"),
+      V("1","1.4",17,"ρ<sub>c</sub>(E), ρ<sub>v</sub>(E)","导带与价带态密度","Conduction- and valence-band DOS","单位体积、单位能量间隔内可用的电子态数。","m⁻³·eV⁻¹","ρ<sub>c</sub> ∝ (m<sub>e</sub>*)<sup>3/2</sup>√(E−E<sub>c</sub>)",["DOS","电子态密度","空穴态密度"],["态密度","载流子"],"ρ"),
+      V("1","1.4",17,"m<sub>e</sub>*, m<sub>h</sub>*, m<sub>r</sub>","电子、空穴与折合有效质量","Electron, hole and reduced effective mass","用能带曲率等效描述载流子动力学；折合质量用于联合态密度。","kg / m₀","1/m<sub>r</sub> = 1/m<sub>e</sub>* + 1/m<sub>h</sub>*",["effective mass","reduced mass","有效质量","折合质量"],["能带","载流子"],"m"),
+      V("1","1.4",18,"E<sub>Fc</sub>, E<sub>Fv</sub>","电子与空穴准费米能级","Electron and hole quasi-Fermi levels","非平衡注入时分别描述导带电子和价带电子占据情况。","eV","粒子数反转：E<sub>Fc</sub>−E<sub>Fv</sub> &gt; hν",["quasi Fermi","准费米能级","Efc","Efv"],["统计","载流子"],"E"),
+      V("1","1.4",18,"f<sub>c</sub>, f<sub>v</sub>","导带与价带占据因子","Occupation probabilities","f<sub>c</sub> 是导带态被电子占据的概率；1−f<sub>v</sub> 是价带态为空穴的概率。","1","f(E)=1/{1+exp[(E−E<sub>F</sub>)/k<sub>B</sub>T]}",["Fermi Dirac","occupation","占据几率","费米分布"],["统计","载流子"],"f"),
+      V("1","1.5",21,"ρ<sub>red</sub>(hν)","折合态密度 / 联合态密度","Reduced or joint density of states","在满足相同波矢和能量守恒的条件下，可成对参与跃迁的导带–价带态数量。","m⁻³·eV⁻¹","ρ<sub>red</sub> ∝ m<sub>r</sub><sup>3/2</sup>√(hν−E<sub>g</sub>)",["joint DOS","JDOS","折合态密度","联合态密度","rho red"],["态密度","跃迁"],"ρ"),
+      V("1","1.5.1",22,"A<sub>21</sub>, B<sub>12</sub>, B<sub>21</sub>","爱因斯坦跃迁系数","Einstein coefficients","分别表征自发发射、受激吸收和受激发射的跃迁强度。","s⁻¹ / 依定义","热平衡下满足爱因斯坦关系",["Einstein coefficient","爱因斯坦系数","A21","B12","B21"],["跃迁","速率"],"A B"),
+      V("1","1.5.2",23,"R<sub>sp</sub>, R<sub>st</sub>, R<sub>abs</sub>","自发、受激发射与吸收速率","Spontaneous, stimulated and absorption rates","单位体积单位时间内三类光–电子跃迁的数量。","cm⁻³·s⁻¹","R<sub>net</sub> = R<sub>st</sub> − R<sub>abs</sub>",["spontaneous emission","stimulated emission","absorption rate","发射速率"],["跃迁","速率"],"R"),
+      V("1","1.5.3",25,"g(hν)","材料增益系数","Material gain coefficient","光子穿过粒子数反转区时单位长度获得的净受激放大。","cm⁻¹","dΦ/dz = ΓgΦ",["gain","material gain","增益系数"],["增益","激光器"],"g"),
+      V("1","1.5.4",25,"Γ","光场限制因子","Optical confinement factor","光学模式能量位于有源区内的比例，把材料增益转换为模增益。","1","g<sub>modal</sub> = Γg",["confinement factor","限制因子","Gamma"],["增益","波导"],"Γ"),
+      V("1","1.5.4",26,"α(hν)","吸收系数","Absorption coefficient","光强因带间吸收而沿传播方向指数衰减的速率常数。","cm⁻¹","I(z)=I<sub>0</sub>e<sup>−αz</sup>",["absorption coefficient","吸收系数","alpha"],["吸收","光场"],"α"),
+      V("1","1.6.1",27,"τ<sub>sp</sub>","自发辐射寿命","Spontaneous radiative lifetime","非平衡载流子通过自发辐射复合衰减的特征时间。","s","τ<sub>sp</sub> ≈ Δn/R<sub>rad</sub>",["radiative lifetime","载流子寿命","自发复合寿命"],["复合","载流子"],"τ"),
+      V("1","1.6.1",28,"B","双分子辐射复合系数","Bimolecular radiative coefficient","把电子和空穴浓度乘积换算为辐射复合速率。","cm³·s⁻¹","R<sub>rad</sub> = B(np−n<sub>i</sub>²)",["radiative coefficient","B coefficient","辐射复合系数"],["复合","载流子"],"B"),
+      V("1","1.6.1",28,"n, p, Δn, Δp","电子、空穴及非平衡增量","Carrier densities and excess densities","n、p 为总载流子浓度，Δn、Δp 为光注入或电注入产生的增量。","cm⁻³","电中性注入时常有 Δn = Δp",["carrier density","electron density","hole density","载流子浓度"],["载流子","复合"],"n p"),
+      V("1","1.6.2",32,"C<sub>nnp</sub>, C<sub>ppn</sub>","CCHC 与 CHHS 俄歇复合系数","Auger recombination coefficients","分别描述电子主导与空穴主导的三载流子非辐射复合通道。","cm⁶·s⁻¹","R<sub>Auger</sub> = C<sub>nnp</sub>n²p + C<sub>ppn</sub>p²n",["Auger","CCHC","CHHS","俄歇复合"],["复合","非辐射"],"C"),
+      V("1","1.7",36,"J, d, n","电流密度、有源层厚度与载流子浓度","Current density, active thickness and density","注入电流在有源层内建立载流子浓度，是工程链 J→n→g 的前两步。","A·cm⁻² / cm / cm⁻³","J/(qd) = R(n) + dn/dt",["current density","active layer","J n g","电流密度"],["电流","增益"],"J n"),
+      V("1","1.7",38,"J<sub>tr</sub>, n<sub>tr</sub>","透明电流密度与透明载流子浓度","Transparency current and carrier density","净受激增益刚好为零时的注入水平。","A·cm⁻² / cm⁻³","g ≈ g<sub>0</sub>(n−n<sub>tr</sub>)",["transparency current","transparency density","透明电流","透明载流子"],["增益","阈值"],"n J"),
+      V("1","1.7",39,"g<sub>0</sub> / g<sub>N</sub>","增益斜率 / 微分增益","Gain slope or differential gain","载流子浓度变化引起材料增益变化的灵敏度。","cm²","g<sub>N</sub> = ∂g/∂n",["differential gain","gain coefficient","微分增益","增益常数"],["增益","载流子"],"g"),
+
+      V("2","2.1",44,"Φ, χ","功函数与电子亲和势","Work function and electron affinity","Φ 是把电子从费米能级移到真空所需能量；χ 是从导带底移到真空所需能量。","eV","Φ = E<sub>vac</sub>−E<sub>F</sub>; χ=E<sub>vac</sub>−E<sub>c</sub>",["work function","electron affinity","功函数","电子亲和势"],["异质结","能带"],"Φ χ"),
+      V("2","2.1",45,"ΔE<sub>c</sub>, ΔE<sub>v</sub>","导带差与价带差","Conduction- and valence-band offsets","异质结界面两侧导带底和价带顶的不连续量，决定电子和空穴势垒。","eV","ΔE<sub>g</sub> = ΔE<sub>c</sub> + ΔE<sub>v</sub>",["band offset","band discontinuity","导带差","价带差"],["异质结","能带"],"ΔE"),
+      V("2","2.1.1",46,"N<sub>D</sub>, N<sub>A</sub>","施主与受主浓度","Donor and acceptor concentrations","决定异质结空间电荷、费米能级与耗尽区宽度的掺杂浓度。","cm⁻³","电中性：N<sub>A</sub>x<sub>p</sub> = N<sub>D</sub>x<sub>n</sub>",["doping","donor","acceptor","施主浓度","受主浓度"],["掺杂","异质结"],"N"),
+      V("2","2.1.1",46,"x<sub>n</sub>, x<sub>p</sub>","两侧耗尽区宽度","Depletion widths","空间电荷区分别伸入 n 型和 p 型材料的距离。","cm / μm","W = x<sub>n</sub> + x<sub>p</sub>",["depletion width","耗尽层宽度","空间电荷区"],["异质结","电场"],"x"),
+      V("2","2.1.1",46,"V<sub>bi</sub>, V","内建电势与外加偏压","Built-in potential and applied bias","内建势形成界面势垒；外加正向或反向偏压改变实际势垒。","V","势垒能量 ≈ q(V<sub>bi</sub>−V)",["built in voltage","bias","内建电势","偏压"],["异质结","电场"],"V"),
+      V("2","2.1.1",46,"C<sub>j</sub>","结电容","Junction capacitance","异质结耗尽区储存空间电荷形成的单位结电容。","F / F·cm⁻²","C<sub>j</sub> ∝ ε/W",["junction capacitance","结电容"],["异质结","电学"],"C"),
+      V("2","2.1.1",47,"D<sub>n</sub>, τ<sub>n</sub>, L<sub>n</sub>","电子扩散系数、寿命与扩散长度","Electron diffusion parameters","共同决定少数载流子在注入区中的扩散距离。","cm²·s⁻¹ / s / cm","L<sub>n</sub> = √(D<sub>n</sub>τ<sub>n</sub>)",["diffusion coefficient","diffusion length","扩散长度"],["载流子","输运"],"D τ L"),
+      V("2","2.1.2",47,"𝒯","界面传输系数","Interface transmission coefficient","到达界面的载流子中能够越过势垒进入另一侧的比例。","1","0 ≤ 𝒯 ≤ 1",["transmission coefficient","传输系数","interface"],["异质结","输运"],"T"),
+      V("2","2.1.3",48,"l<sub>g</sub>","渐变特征长度","Grading length","能带不连续在渐变异质结中展开的空间尺度。","cm / nm","ΔE<sub>c</sub>(x) 常用平滑函数描述",["grading length","graded junction","渐变长度"],["异质结","几何"],"l"),
+      V("2","2.3",52,"a<sub>1</sub>, a<sub>2</sub>, f","晶格常数与晶格失配度","Lattice constants and mismatch","a₁、a₂ 是异质材料晶格常数；f 衡量界面失配。","Å / 1","f = (a<sub>1</sub>−a<sub>2</sub>)/ā",["lattice constant","lattice mismatch","晶格常数","失配度"],["材料","外延"],"a f"),
+      V("2","2.3",51,"N<sub>it</sub>, S","界面态密度与界面复合速度","Interface-state density and recombination velocity","失配缺陷产生界面态并增加载流子非辐射复合。","cm⁻²·eV⁻¹ / cm·s⁻¹","S ∝ σv<sub>th</sub>N<sub>it</sub>",["interface state","surface recombination","界面态","界面复合速度"],["缺陷","复合"],"N S"),
+      V("2","2.3",53,"τ<sub>eff</sub>","有效复合寿命","Effective recombination lifetime","同时考虑体内辐射/非辐射复合和两个界面的总寿命。","s","1/τ<sub>eff</sub> = 1/τ<sub>r</sub> + 1/τ<sub>nr</sub> + 2S/d",["effective lifetime","有效寿命","interface recombination"],["复合","异质结"],"τ"),
+      V("2","2.3",54,"x, y","三元/四元材料组分","Alloy composition fractions","表示 III–V 合金中不同元素的摩尔分数，用于内插晶格常数、带隙和折射率。","1","0 ≤ x,y ≤ 1",["composition","mole fraction","组分","摩尔分数"],["材料","外延"],"x y"),
+      V("2","2.3",54,"h<sub>c</sub>","应变层临界厚度","Critical thickness","晶格失配外延层在产生失配位错之前可保持相干应变的最大厚度。","nm","h &lt; h<sub>c</sub> 时通常维持相干外延",["critical thickness","临界厚度","misfit dislocation"],["材料","外延"],"h"),
+      V("2","2.3",55,"α<sub>L</sub>","线膨胀系数","Thermal expansion coefficient","描述晶格常数随温度的相对变化。","K⁻¹","a(T) ≈ a(T<sub>0</sub>)[1+α<sub>L</sub>(T−T<sub>0</sub>)]",["thermal expansion","热膨胀系数"],["材料","温度"],"α"),
+      V("2","2.4.1",56,"λ<sub>g</sub>","带隙波长","Band-gap wavelength","与材料禁带宽度对应的最长本征带间吸收/发射波长。","μm / nm","λ<sub>g</sub> ≈ hc/E<sub>g</sub>",["bandgap wavelength","截止波长","带隙波长"],["材料","光子"],"λ"),
+      V("2","2.4.3",59,"n(λ); A,B,C","折射率与塞尔迈耶参数","Refractive index and Sellmeier parameters","用经验色散式描述材料折射率随波长的变化。","1","n²(λ) = A + Bλ²/(λ²−C)",["Sellmeier","refractive index","折射率色散"],["材料","光学"],"n A B C"),
+      V("2","2.4.3",60,"R, κ","反射率与消光系数","Reflectivity and extinction coefficient","R 是界面功率反射比例；κ 是复折射率虚部并反映吸收损耗。","1","ñ = n − iκ",["reflectivity","extinction coefficient","反射率","消光系数"],["材料","光学"],"R κ"),
+      V("2","2.4.3",61,"Δn<sub>fc</sub>","自由载流子引起的折射率变化","Free-carrier index change","注入电子和空穴通过等离子体色散改变折射率。","1","Δn<sub>fc</sub> ∝ −λ²(N/m<sub>e</sub>* + P/m<sub>h</sub>*)",["plasma effect","carrier induced index","载流子折射率"],["材料","载流子"],"n"),
+      V("2","2.4.3",62,"dn/dT, ΔT","热光系数与温升","Thermo-optic coefficient and temperature rise","温度变化通过热光效应改变折射率和器件模式。","K⁻¹ / K","Δn<sub>T</sub> = (dn/dT)ΔT",["thermo optic","热光系数","temperature"],["材料","温度"],"n T"),
+      V("2","2.5.1",64,"ΔE<sub>ΓL</sub>, ΔE<sub>ΓX</sub>","能谷间能量差","Intervalley energy separations","Γ 谷与 L、X 谷导带底之间的能量差，决定高能电子转谷和漏泄。","eV","ΔE<sub>ΓL</sub> = E<sub>L</sub>−E<sub>Γ</sub>",["valley separation","Gamma L X","能谷"],["能带","漏电"],"ΔE"),
+      V("2","2.5.2",66,"J<sub>n</sub>, J<sub>p</sub>, J<sub>leak</sub>","电子、空穴与漏电流密度","Electron, hole and leakage current densities","区分有效注入载流子流和越过异质结势垒的寄生流。","A·cm⁻²","J<sub>n</sub> = qμ<sub>n</sub>nE + qD<sub>n</sub>dn/dx",["leakage current","drift diffusion","漏电流","漂移扩散"],["输运","漏电"],"J"),
+      V("2","2.5.2",67,"μ<sub>n</sub>, μ<sub>p</sub>","电子与空穴迁移率","Electron and hole mobilities","电场驱动载流子漂移的能力。","cm²·V⁻¹·s⁻¹","v<sub>d</sub> = μE",["mobility","迁移率","drift"],["载流子","输运"],"μ"),
+
+      V("3","3.1.1",73,"E, H, D, B","电磁场四个基本矢量","Electromagnetic field vectors","分别为电场强度、磁场强度、电位移和磁感应强度。","V·m⁻¹ / A·m⁻¹ / C·m⁻² / T","D = εE; B = μH",["electric field","magnetic field","电位移","磁感应"],["电磁","波导"],"E H B"),
+      V("3","3.1.1",73,"J, ρ","电流密度与电荷密度","Current and charge densities","麦克斯韦方程中的自由电流源和自由电荷源。","A·m⁻² / C·m⁻³","∇·D = ρ; ∇×H = J + ∂D/∂t",["current density","charge density","电荷密度"],["电磁","波导"],"J ρ"),
+      V("3","3.1.1",73,"ε<sub>r</sub>, μ<sub>r</sub>, σ","相对介电常数、相对磁导率与电导率","Relative permittivity, permeability and conductivity","描述介质对电场、磁场以及导电损耗的响应。","1 / 1 / S·m⁻¹","D=ε<sub>0</sub>ε<sub>r</sub>E; J=σE",["permittivity","permeability","conductivity","介电常数","电导率"],["电磁","材料"],"ε μ σ"),
+      V("3","3.1.1",74,"∇²","拉普拉斯算符","Laplacian","波动方程中描述场在空间二阶变化的算符。","m⁻²","∇²E − με∂²E/∂t² = 0",["Laplacian","拉普拉斯","nabla"],["数学","电磁"]),
+      V("3","3.1.1",75,"k<sub>0</sub>, β","真空波数与传播常数","Vacuum wave number and propagation constant","k₀ 由真空波长决定；β 是波导模式沿传播方向单位长度的相位变化。","m⁻¹","k<sub>0</sub>=2π/λ<sub>0</sub>; β=n<sub>eff</sub>k<sub>0</sub>",["wavenumber","propagation constant","波数","传播常数"],["波导","相位"],"k β"),
+      V("3","3.1.1",75,"v<sub>p</sub>, v<sub>g</sub>","相速度与群速度","Phase and group velocity","相速度跟踪等相位面，群速度描述包络或能量传播。","m·s⁻¹","v<sub>p</sub>=ω/β; v<sub>g</sub>=dω/dβ",["phase velocity","group velocity","相速","群速"],["波导","色散"],"v"),
+      V("3","3.1.2",76,"γ̃","复传播常数","Complex propagation constant","同时包含相位传播和幅度衰减。","m⁻¹","γ̃ = α/2 + iβ",["complex propagation","复传输常数","gamma"],["波导","损耗"],"γ"),
+      V("3","3.1.2",77,"ñ = n − iκ","复折射率","Complex refractive index","实部 n 决定相位速度，虚部 κ 决定介质吸收。","1","α = 4πκ/λ<sub>0</sub>",["complex refractive index","消光系数","复折射率"],["材料","损耗"],"n κ"),
+      V("3","3.2.1",78,"n<sub>1</sub>, n<sub>2</sub>, n<sub>3</sub>","三层波导折射率","Three-layer waveguide indices","分别表示芯层、上包层和下包层折射率；导波通常要求芯层最高。","1","max(n<sub>2</sub>,n<sub>3</sub>) &lt; n<sub>eff</sub> &lt; n<sub>1</sub>",["core index","cladding index","芯层","包层"],["波导","材料"],"n"),
+      V("3","3.2.1",78,"d","芯层厚度","Core thickness","平板波导高折射率层的几何厚度，决定允许模式数和限制强度。","μm / nm","V ∝ k<sub>0</sub>d√(n<sub>1</sub>²−n<sub>2</sub>²)",["core thickness","waveguide thickness","波导厚度"],["波导","几何"],"d"),
+      V("3","3.2.1",79,"E(x), β","横向模场与本征值","Transverse mode field and eigenvalue","E(x) 是横向场分布；满足边界条件的离散 β 给出允许模式。","场单位 / m⁻¹","d²E/dx² + (n²k<sub>0</sub>²−β²)E = 0",["eigenmode","mode field","本征模式","模场"],["波导","模式"],"E β"),
+      V("3","3.2.1",80,"κ<sub>x</sub>, γ<sub>x</sub>","芯层横向波数与包层衰减常数","Transverse and evanescent constants","芯层内形成振荡场，包层内形成指数衰减的倏逝场。","m⁻¹","κ<sub>x</sub>²=n<sub>1</sub>²k<sub>0</sub>²−β²; γ<sub>x</sub>²=β²−n<sub>2</sub>²k<sub>0</sub>²",["transverse wavenumber","evanescent decay","倏逝场"],["波导","模式"],"κ γ"),
+      V("3","3.2.1",81,"u, w, V","归一化横向参数与归一化频率","Normalized waveguide parameters","用无量纲量统一表示芯层振荡、包层衰减和波导尺寸。","1","u²+w²=V²",["normalized frequency","V number","归一化频率"],["波导","模式"],"V u w"),
+      V("3","3.2.1",81,"m","模式阶数","Mode order","标记满足本征方程的离散 TE/TM 横模。","整数","m = 0,1,2,…",["mode order","模阶数","mode index"],["波导","模式"],"m"),
+      V("3","3.2.2",83,"TE, TM","横电模与横磁模","Transverse-electric and transverse-magnetic modes","TE 模沿传播方向无电场分量；TM 模沿传播方向无磁场分量。","—","由边界条件得到不同本征方程",["transverse electric","transverse magnetic","横电模","横磁模"],["波导","模式"]),
+      V("3","3.2.2",85,"θ<sub>i</sub>, θ<sub>t</sub>, θ<sub>r</sub>","入射、折射与反射角","Incidence, transmission and reflection angles","用于射线法分析波导界面处的折射与全反射。","rad / °","n<sub>1</sub>sinθ<sub>i</sub>=n<sub>2</sub>sinθ<sub>t</sub>",["Snell law","入射角","折射角","反射角"],["波导","界面"],"θ"),
+      V("3","3.2.2",85,"r, t, R, T","菲涅耳振幅与功率系数","Fresnel coefficients","r、t 为场振幅反射/透射系数，R、T 为对应功率比例。","1","R=|r|²; 无损时 R+T=1",["Fresnel","reflection coefficient","transmission coefficient","菲涅耳"],["界面","光场"],"R T r t"),
+      V("3","3.2.2",87,"θ<sub>c</sub>","全反射临界角","Critical angle","从高折射率介质入射时刚好出现全反射的最小入射角。","rad / °","sinθ<sub>c</sub>=n<sub>2</sub>/n<sub>1</sub>",["critical angle","临界角","total internal reflection"],["波导","界面"],"θ"),
+      V("3","3.2.2",88,"φ<sub>r</sub>","全反射相移","Total-internal-reflection phase shift","全反射时场反射系数模为 1，但反射波相位发生偏移。","rad","r=e<sup>iφ<sub>r</sub></sup>",["reflection phase","反射相移","Goos Hanchen"],["波导","相位"],"φ"),
+      V("3","3.2.2",89,"δ<sub>p</sub>","倏逝场渗透深度","Evanescent penetration depth","包层场幅度衰减到界面值 1/e 所经历的距离。","m / μm","δ<sub>p</sub>=1/γ<sub>x</sub>",["penetration depth","evanescent field","渗透深度"],["波导","模式"],"δ"),
+      V("3","3.3",92,"n<sub>eff</sub>","有效折射率","Effective refractive index","把二维或三维导模沿传播方向的相位常数等效为折射率。","1","n<sub>eff</sub>=β/k<sub>0</sub>",["effective index","有效折射率","neff"],["波导","模式"],"n"),
+      V("3","3.3",95,"W, p, q","矩形波导宽度与模序数","Rectangular-waveguide width and mode indices","W 是侧向波导宽度，p、q 标记两个横向方向的模式阶数。","μm / 整数","TE<sub>pq</sub> / TM<sub>pq</sub>",["rectangular waveguide","lateral width","横模序数"],["波导","几何"],"W p q"),
+
+      V("4","4.2",98,"L","激光谐振腔长","Laser cavity length","两个反射腔面之间的传播距离，决定镜面损耗和纵模间隔。","μm / mm","Δν ≈ c/(2n<sub>g</sub>L)",["cavity length","腔长","laser length"],["谐振腔","激光器"],"L"),
+      V("4","4.2",98,"r<sub>1</sub>, r<sub>2</sub>; R<sub>1</sub>, R<sub>2</sub>","腔面场反射与功率反射率","Facet amplitude and power reflectivities","r 是场振幅系数，R=|r|² 是每个腔面的功率反射比例。","1","R<sub>i</sub>=|r<sub>i</sub>|²",["facet reflectivity","mirror reflectivity","腔面反射率"],["谐振腔","损耗"],"R r"),
+      V("4","4.2",99,"α<sub>i</sub>, α<sub>m</sub>","内部损耗与镜面损耗","Internal and mirror losses","αᵢ 包含吸收/散射等腔内损耗；αₘ 表示输出耦合造成的镜面损耗。","cm⁻¹","α<sub>m</sub>=(1/2L)ln[1/(R<sub>1</sub>R<sub>2</sub>)]",["internal loss","mirror loss","腔损耗"],["谐振腔","损耗"],"α"),
+      V("4","4.2",99,"g<sub>th</sub>","阈值材料增益","Threshold material gain","往返模增益刚好补偿内部与镜面损耗时的材料增益。","cm⁻¹","Γg<sub>th</sub>=α<sub>i</sub>+α<sub>m</sub>",["threshold gain","阈值增益"],["阈值","激光器"],"g"),
+      V("4","4.2",100,"J<sub>th</sub>, I<sub>th</sub>","阈值电流密度与阈值电流","Threshold current density and current","器件首次满足净增益条件并开始激射时的注入水平。","A·cm⁻² / A","I<sub>th</sub>=J<sub>th</sub>×注入面积",["threshold current","阈值电流","threshold density"],["阈值","电流"],"J I"),
+      V("4","4.2",100,"m, λ<sub>m</sub>, ν<sub>m</sub>","纵模阶数、波长与频率","Longitudinal-mode order, wavelength and frequency","满足腔往返相位为 2π 整数倍的离散谐振模式。","整数 / nm / Hz","2n<sub>eff</sub>L=mλ<sub>m</sub>",["longitudinal mode","纵模","resonance"],["谐振腔","模式"],"m λ ν"),
+      V("4","4.2",100,"n<sub>g</sub>, Δν, Δλ","群折射率与纵模间隔","Group index and mode spacing","n<sub>g</sub> 包含材料色散；Δν、Δλ 是相邻纵模的频率/波长差。","1 / Hz / nm","Δν=c/(2n<sub>g</sub>L); Δλ≈λ²/(2n<sub>g</sub>L)",["group index","mode spacing","FSR","纵模间隔"],["谐振腔","色散"],"n Δν Δλ"),
+      V("4","4.4",107,"ρ<sub>1</sub>, ρ<sub>2</sub>, d<sub>1</sub>, d<sub>2</sub>","层电阻率与厚度","Layer resistivities and thicknesses","用于计算条形接触下的侧向电流扩展。","Ω·cm / cm","片电阻约为 ρ/d",["resistivity","sheet resistance","电阻率","电流扩展"],["条形激光器","电流"],"ρ d"),
+      V("4","4.4",107,"J(y), V(y)","侧向电流密度与结电压分布","Lateral current and junction-voltage profiles","描述条形电极下电流注入是否均匀。","A·cm⁻² / V","J(y) 与二极管指数关系耦合",["current spreading","lateral current","电流分布"],["条形激光器","电流"],"J V"),
+      V("4","4.4",109,"R(N)","总载流子复合率","Total carrier recombination rate","把寿命项、辐射项和更高阶非辐射项合并成载流子浓度函数。","cm⁻³·s⁻¹","R(N)=AN+BN²+CN³",["ABC recombination","复合率","carrier recombination"],["复合","激光器"],"R"),
+      V("4","4.5",112,"Δn(y), Δg(y)","侧向折射率与增益变化","Lateral index and gain variations","载流子注入同时改变折射率实部和增益，形成载流子波导/增益波导。","1 / cm⁻¹","ñ(y)=n+Δn(y)−iκ(y)",["gain guiding","index guiding","增益波导","载流子波导"],["条形激光器","波导"],"n g"),
+      V("4","4.5",113,"β<sub>x</sub>, β<sub>z</sub>","横向与纵向传播常数","Transverse and longitudinal propagation constants","分离变量后分别描述侧向模场变化和沿腔方向传播。","m⁻¹","β<sub>x</sub>²+β<sub>z</sub>²≈n²k<sub>0</sub>²",["propagation constant","横向传播常数"],["波导","模式"],"β"),
+      V("4","4.5.2",114,"H<sub>m</sub>(ξ)","厄米多项式","Hermite polynomial","抛物型增益/折射率分布下厄米–高斯侧模的阶数函数。","1","E<sub>m</sub>(ξ)∝H<sub>m</sub>(ξ)e<sup>−ξ²/2</sup>",["Hermite Gaussian","厄米高斯","Hermite polynomial"],["波导","模式"],"H"),
+      V("4","4.5.3",117,"K","像散因子","Astigmatism K factor","量化横向等效光源位置与腔面之间的偏移，从而描述像散。","1 / 依定义","K 由近场与远场相位/宽度关系确定",["astigmatism","K factor","像散因子"],["光束","性能"],"K"),
+      V("4","4.5.4",118,"α<sub>H</sub>","反波导 / 线宽增强因子","Antiguiding or linewidth-enhancement factor","载流子引起的折射率变化与增益变化的耦合比；在第 5 章用于线宽和啁啾。","1","α<sub>H</sub> ∝ −(∂n/∂N)/(∂g/∂N)",["Henry factor","alpha factor","反波导因子","线宽增强因子"],["波导","增益"],"α"),
+      V("4","4.6",122,"L<sub>c</sub>, n<sub>eff</sub>, m","VCSEL 腔长、有效折射率与纵模阶数","VCSEL cavity parameters","垂直腔驻波条件所需的几何和相位参数。","m / 1 / 整数","2n<sub>eff</sub>L<sub>c</sub>=mλ",["VCSEL cavity","vertical cavity","垂直腔"],["VCSEL","谐振腔"],"L n m"),
+      V("4","4.6.3",123,"A(z), B(z)","DBR 正向与反向行波振幅","Forward and backward DBR waves","布拉格反射器中相向传播并周期性交换能量的复振幅。","场振幅","E(z)=A(z)e<sup>−iβz</sup>+B(z)e<sup>iβz</sup>",["coupled waves","forward backward wave","正向行波","反向行波"],["DBR","耦合波"],"A B"),
+      V("4","4.6.3",123,"Λ, N<sub>DBR</sub>","DBR 周期与周期数","DBR period and pair count","Λ 是高/低折射率层对的空间周期，N 决定反射率和带宽。","nm / 整数","一阶布拉格：λ<sub>B</sub>≈2n̄Λ",["Bragg period","DBR pairs","布拉格周期"],["DBR","光栅"],"Λ N"),
+      V("4","4.6.3",124,"n<sub>H</sub>, n<sub>L</sub>","DBR 高、低折射率","High and low DBR indices","交替层折射率差决定耦合强度和反射带宽。","1","Δn=n<sub>H</sub>−n<sub>L</sub>",["high low index","index contrast","折射率差"],["DBR","材料"],"n"),
+      V("4","4.7",127,"β<sub>B</sub>, δ","布拉格传播常数与失谐量","Bragg propagation constant and detuning","β<sub>B</sub> 对应光栅布拉格条件，δ 衡量工作波与其偏离程度。","m⁻¹","β<sub>B</sub>=π/Λ; δ=β−β<sub>B</sub>",["Bragg detuning","失谐","Bragg wavevector"],["DFB","光栅"],"β δ"),
+      V("4","4.7.2",128,"R(z), S(z)","DFB 正、反行波慢变振幅","DFB forward and backward amplitudes","在光栅内通过耦合系数相互转换的两列波。","场振幅","dR/dz 与 S 耦合；dS/dz 与 R 耦合",["coupled mode","DFB waves","正反行波"],["DFB","耦合波"],"R S"),
+      V("4","4.7.2",129,"κ","光栅耦合系数","Grating coupling coefficient","表示相向传播两波之间能量耦合强弱；常用 κL 衡量 DFB 反馈强度。","cm⁻¹","耦合强度 ∝ κL",["coupling coefficient","kappa","耦合系数","κL"],["DFB","光栅"],"κ"),
+      V("4","4.7.3",129,"γ","DFB 复本征值","DFB complex eigenvalue","耦合波方程的本征传播常数，决定场沿光栅的增长/衰减和相位。","m⁻¹","γ² = κ² − δ²（理想无损形式）",["DFB eigenvalue","complex propagation","gamma"],["DFB","模式"],"γ"),
+      V("4","4.7.4",131,"λ<sub>B</sub>","布拉格波长","Bragg wavelength","光栅分布反馈最强、满足相位匹配的中心波长。","nm","λ<sub>B</sub>=2n<sub>eff</sub>Λ/m",["Bragg wavelength","布拉格波长","grating period"],["DFB","光栅"],"λ"),
+      V("4","4.7.5",133,"Δn<sub>g</sub>, g<sub>1</sub>","折射率与增益光栅调制幅度","Index- and gain-grating amplitudes","分别量化折射率耦合 DFB 与增益耦合 DFB 的周期扰动。","1 / cm⁻¹","n(z)=n̄+Δn<sub>g</sub>cos(2πz/Λ)",["index grating","gain coupling","增益耦合","折射率耦合"],["DFB","光栅"],"n g"),
+
+      V("5","5.1.1",138,"Γ(d)","厚度相关的光场限制因子","Thickness-dependent confinement factor","有源层厚度改变模场留在有源层内的比例，从而影响阈值。","1","Γ = ∫<sub>active</sub>|E|²dx / ∫<sub>all</sub>|E|²dx",["confinement factor","active thickness","限制因子"],["阈值","波导"],"Γ"),
+      V("5","5.1.1",139,"η<sub>i</sub>","内量子效率","Internal quantum efficiency","注入有源区的电子–空穴对中对有用辐射过程作贡献的比例。","1 / %","η<sub>i</sub> = R<sub>rad</sub>/R<sub>total</sub>",["internal quantum efficiency","内量子效率"],["效率","激光器"],"η"),
+      V("5","5.1.2",140,"w, d, L, N<sub>th</sub>","有源区尺寸与阈值载流子浓度","Active-region dimensions and threshold density","条宽、厚度和腔长决定有源体积，N<sub>th</sub> 决定达到阈值所需载流子数。","cm / cm⁻³","V<sub>a</sub>=wdL",["active volume","threshold carrier","有源区体积"],["阈值","几何"],"w d L N"),
+      V("5","5.1.3",141,"T<sub>0</sub>","特征温度","Characteristic temperature","衡量阈值电流对温度敏感程度；T₀ 越大，温度稳定性越好。","K","J<sub>th</sub>(T)=J<sub>th</sub>(T<sub>r</sub>)exp[(T−T<sub>r</sub>)/T<sub>0</sub>]",["characteristic temperature","特征温度","T0"],["阈值","温度"],"T"),
+      V("5","5.2",143,"P, I, V<sub>f</sub>, R<sub>s</sub>","输出功率、工作电流、正向压降与串联电阻","Power and electrical drive variables","构成激光器电光功率转换效率与发热的直接测量量。","W / A / V / Ω","P<sub>elec</sub>≈IV<sub>f</sub>",["output power","forward voltage","series resistance","输出功率"],["效率","电学"],"P I V R"),
+      V("5","5.2",144,"η<sub>d</sub>","外微分量子效率 / 斜率效率","External differential quantum efficiency","阈值以上每增加一个注入电子所增加的输出光子数。","1 / W·A⁻¹","dP/dI = η<sub>d</sub>hν/q",["differential quantum efficiency","slope efficiency","外微分量子效率","斜率效率"],["效率","激光器"],"η"),
+      V("5","5.2",143,"η<sub>wp</sub>","墙插效率 / 功率效率","Wall-plug efficiency","激光输出光功率与输入电功率之比。","1 / %","η<sub>wp</sub>=P/(IV)",["wall plug efficiency","power conversion efficiency","功率效率"],["效率","激光器"],"η"),
+      V("5","5.3",146,"θ<sub>⊥</sub>, θ<sub>∥</sub>","垂直与平行结面的远场发散角","Vertical and lateral divergence angles","描述不对称近场经衍射后在两个方向的光束张角。","rad / °","θ ∼ λ/(πw<sub>0</sub>)",["far field","divergence angle","远场发散角"],["光束","远场"],"θ"),
+      V("5","5.3",146,"w<sub>0</sub>","近场光斑半径","Near-field spot radius","腔面附近模场的有效宽度，决定远场发散和光纤耦合。","μm","w<sub>0</sub>θ≈λ/π（高斯近似）",["spot size","mode field radius","光斑半径"],["光束","近场"],"w"),
+      V("5","5.4.1",149,"m, p, q","横模、侧模与纵模指标","Transverse, lateral and longitudinal mode indices","分别标记垂直、侧向和腔长方向的驻波阶数。","整数","TE<sub>mp</sub>，纵模 q",["mode index","横模","侧模","纵模"],["模式","激光器"],"m p q"),
+      V("5","5.4.2",151,"S<sub>q</sub>","第 q 个纵模的光子密度","Photon density in longitudinal mode q","速率方程中跟踪每个纵模的光子数量，分析模竞争。","cm⁻³","dS<sub>q</sub>/dt = ΓG<sub>q</sub>S<sub>q</sub> + β<sub>q</sub>R<sub>sp</sub> − S<sub>q</sub>/τ<sub>p</sub>",["photon density","mode competition","光子密度"],["模式","速率方程"],"S"),
+      V("5","5.4.2",151,"β<sub>sp,q</sub>","自发发射耦合因子","Spontaneous-emission coupling factor","总自发发射中进入第 q 个激光模式的比例。","1","0 &lt; β<sub>sp,q</sub> &lt; 1",["spontaneous emission factor","beta sp","自发发射因子"],["模式","自发发射"],"β"),
+      V("5","5.4.2",151,"g<sub>q</sub>","第 q 模的增益","Modal material gain","增益谱在第 q 个纵模波长处的材料增益。","cm⁻¹","g<sub>q</sub>=g(λ<sub>q</sub>,N)",["modal gain","mode gain","模式增益"],["模式","增益"],"g"),
+      V("5","5.4.3",153,"Δλ<sub>L</sub>","纵模波长间隔","Longitudinal-mode spacing","相邻法布里–珀罗纵模的波长差。","nm","Δλ<sub>L</sub>≈λ²/(2n<sub>g</sub>L)",["longitudinal mode spacing","FSR","纵模间隔"],["模式","谐振腔"],"Δλ"),
+      V("5","5.4.4",155,"P<sub>sat,s</sub>","次模饱和功率","Side-mode saturation power","空间烧孔和增益竞争使次模开始显著增长时的输出功率尺度。","W / mW","由增益压缩、腔损耗和有源截面共同决定",["side mode","saturation power","次模","单模功率"],["模式","功率"],"P"),
+      V("5","5.5.1",158,"Δν<sub>ST</sub>","肖洛–汤斯线宽","Schawlow–Townes linewidth","由自发发射引起的理想激光相位扩散极限线宽。","Hz","Δν<sub>ST</sub> ∝ R<sub>sp</sub>/N<sub>ph</sub>",["Schawlow Townes","ST linewidth","肖洛汤斯","激光线宽"],["线宽","噪声"],"Δν"),
+      V("5","5.5.1",159,"τ<sub>coh</sub>","相干时间","Coherence time","激光相位由相关演化到失去相关的特征时间。","s","τ<sub>coh</sub>≈1/(πΔν)",["coherence time","相干时间"],["线宽","相位"],"τ"),
+      V("5","5.5.2",160,"n<sub>sp</sub>","粒子数反转 / 自发发射因子","Population-inversion factor","量化实际反转不完全导致的自发发射噪声增强。","1","半导体线宽 ∝ n<sub>sp</sub>",["population inversion factor","spontaneous emission factor","反转因子"],["线宽","自发发射"],"n"),
+      V("5","5.5.2",160,"α<sub>H</sub>","线宽增强因子（Henry 因子）","Linewidth-enhancement factor","载流子涨落同时引起增益和折射率变化，使线宽比理想值增加。","1","Δν = Δν<sub>ST</sub>(1+α<sub>H</sub>²)",["Henry factor","alpha factor","线宽增强因子"],["线宽","载流子"],"α"),
+      V("5","5.5.2",159,"Q, Δν<sub>c</sub>","冷腔品质因子与冷腔线宽","Cold-cavity Q and linewidth","描述无增益谐振腔的储能能力和被动共振宽度。","1 / Hz","Q=ν/Δν<sub>c</sub>",["cold cavity","quality factor","冷腔","品质因子"],["谐振腔","线宽"],"Q"),
+      V("5","5.6.2",163,"N, S","载流子密度与光子密度","Carrier and photon densities","激光瞬态速率方程的两个核心状态变量。","cm⁻³","dN/dt = J/(qd) − R(N) − ΓG(N)S",["rate equations","carrier photon","速率方程","载流子光子"],["动态","激光器"],"N S"),
+      V("5","5.6.2",163,"τ<sub>n</sub>, τ<sub>p</sub>","载流子寿命与光子寿命","Carrier and photon lifetimes","分别决定载流子库和腔内光子库的自然衰减时间。","s","1/τ<sub>p</sub>=v<sub>g</sub>(α<sub>i</sub>+α<sub>m</sub>)",["carrier lifetime","photon lifetime","光子寿命"],["动态","寿命"],"τ"),
+      V("5","5.6.2",163,"G(N)","受激发射速率系数","Stimulated-emission rate coefficient","材料增益与光群速的乘积，把光子密度换算为受激复合速率。","s⁻¹","G(N)=v<sub>g</sub>g(N)",["stimulated rate","gain rate","受激发射速率"],["动态","增益"],"G"),
+      V("5","5.6.3",164,"t<sub>d</sub>, t<sub>on</sub>","延迟时间与开启时间","Delay and turn-on times","阶跃电流后载流子达到阈值以及光输出建立到稳态所需时间。","s / ns","t<sub>on</sub> 包含载流子累积与光子建立过程",["delay time","turn on time","延迟时间","开启时间"],["动态","调制"],"t"),
+      V("5","5.6.5",168,"g<sub>N</sub>","微分增益","Differential gain","阈值附近增益对载流子密度的斜率，直接影响调制带宽。","cm²","g<sub>N</sub>=∂g/∂N",["differential gain","微分增益"],["动态","增益"],"g"),
+      V("5","5.6.5",169,"ω<sub>r</sub>, f<sub>r</sub>","张弛振荡角频率与频率","Relaxation-oscillation frequency","载流子与光子两个储能系统交换能量产生的固有振荡频率。","rad·s⁻¹ / Hz","f<sub>r</sub>=ω<sub>r</sub>/(2π) ∝ √(P)",["relaxation oscillation","张弛振荡","fr"],["动态","调制"],"ω f"),
+      V("5","5.6.5",169,"γ<sub>d</sub>","调制阻尼系数","Modulation damping factor","决定张弛振荡峰的衰减速度和小信号响应平坦度。","s⁻¹","H(ω) 分母含 iγ<sub>d</sub>ω",["damping factor","阻尼系数","modulation response"],["动态","调制"],"γ"),
+      V("5","5.7.1",172,"T<sub>j</sub>, T<sub>s</sub>, R<sub>th</sub>","结温、热沉温度与热阻","Junction temperature, sink temperature and thermal resistance","把耗散功率换算为结区温升。","K / K·W⁻¹","T<sub>j</sub>=T<sub>s</sub>+R<sub>th</sub>P<sub>diss</sub>",["junction temperature","thermal resistance","结温","热阻"],["可靠性","温度"],"T R"),
+      V("5","5.7.2",175,"t<sub>life</sub>, E<sub>a</sub>","工作寿命与激活能","Lifetime and activation energy","退化速率的 Arrhenius 温度关系参数，用于加速寿命外推。","h / eV","t<sub>life</sub> ∝ exp(E<sub>a</sub>/k<sub>B</sub>T)",["Arrhenius","activation energy","寿命","激活能"],["可靠性","退化"],"t E"),
+
+      V("6","6.2.1",180,"L<sub>z</sub>, V<sub>0</sub>","量子阱宽与势垒高度","Quantum-well width and barrier height","决定垂直阱面方向的束缚态数和量子化能量。","nm / eV","E<sub>n</sub> ∝ n²/L<sub>z</sub>²（无限深阱）",["quantum well width","barrier height","阱宽","势垒"],["量子阱","几何"],"L V"),
+      V("6","6.2.1",181,"ψ<sub>n</sub>(z), E<sub>n</sub>","阱内第 n 个波函数与子带能量","Quantum-well eigenstate and subband energy","受限方向的薛定谔方程给出离散波函数和能量本征值。","m⁻¹ᐟ² / eV","E<sub>n</sub>=ℏ²π²n²/(2m*L<sub>z</sub>²)",["subband","eigenstate","量子化能级","子带"],["量子阱","量子"] ,"ψ E n"),
+      V("6","6.2.1",182,"k<sub>∥</sub>, k<sub>z</sub>","阱平面与受限方向波矢","In-plane and confinement wave vectors","载流子在阱平面自由运动，而 z 方向只允许离散量子化值。","m⁻¹","E=E<sub>n</sub>+ℏ²k<sub>∥</sub>²/(2m*)",["in plane wavevector","confinement","平面波矢"],["量子阱","能带"],"k"),
+      V("6","6.2.2",182,"ρ<sub>2D</sub>(E)","二维态密度","Two-dimensional density of states","量子阱中每个子带贡献一段常数态密度，呈台阶状。","cm⁻²·eV⁻¹","ρ<sub>2D</sub>=(m*/πℏ²)ΣH(E−E<sub>n</sub>)",["2D DOS","二维态密度","quantum well DOS"],["量子阱","态密度"],"ρ"),
+      V("6","6.2.2",182,"H(x)","亥维赛阶跃函数","Heaviside step function","用来开启每个量子化子带对二维态密度的贡献。","1","H(x)=0 (x&lt;0), H(x)=1 (x&gt;0)",["Heaviside","step function","阶跃函数"],["数学","态密度"],"H"),
+      V("6","6.2.2",183,"m<sub>r</sub>","电子–空穴折合质量","Electron–hole reduced mass","量子阱联合态密度和光学跃迁中电子、空穴有效质量的组合。","kg / m₀","1/m<sub>r</sub>=1/m<sub>e</sub>*+1/m<sub>h</sub>*",["reduced mass","折合质量"],["量子阱","载流子"],"m"),
+      V("6","6.2.2",183,"g<sub>QW</sub>(E)","量子阱材料增益","Quantum-well material gain","受二维台阶态密度和占据因子共同决定，通常具有更高微分增益。","cm⁻¹","g<sub>QW</sub> ∝ ρ<sub>2D</sub>(f<sub>c</sub>−f<sub>v</sub>)",["quantum well gain","量子阱增益"],["量子阱","增益"],"g"),
+      V("6","6.2.3",184,"E<sub>b</sub>, a<sub>B</sub>*","激子束缚能与有效玻尔半径","Exciton binding energy and Bohr radius","电子–空穴库仑束缚的能量和空间尺度；量子限制会增强束缚。","eV / nm","E<sub>b</sub>∝μ/ε<sub>r</sub>²; a<sub>B</sub>*∝ε<sub>r</sub>/μ",["exciton","binding energy","激子束缚能","玻尔半径"],["激子","量子阱"],"E a"),
+      V("6","6.2.3",184,"F, ΔE<sub>QCSE</sub>","外电场与量子限制斯塔克位移","Electric field and QCSE shift","垂直电场使电子、空穴波函数分离并使吸收边/发光峰移动。","V·cm⁻¹ / eV","ΔE<sub>QCSE</sub> 随 F 增大通常红移",["QCSE","Stark effect","量子限制斯塔克","电场"],["量子阱","电光效应"],"F E"),
+      V("6","6.2.4",186,"f, ε<sub>ij</sub>","晶格失配度与应变张量","Lattice mismatch and strain tensor","f 给出晶格常数失配；εᵢⱼ 描述应变在各方向和剪切分量。","1","f=Δa/a",["strain","lattice mismatch","应变张量"],["应变","材料"],"f ε"),
+      V("6","6.2.4",186,"C<sub>ij</sub>, ν<sub>P</sub>","弹性常数与泊松比","Elastic constants and Poisson ratio","把面内应变与垂直应变、应力和临界厚度联系起来。","Pa / 1","ε<sub>⊥</sub> 与 ε<sub>∥</sub> 由 C<sub>ij</sub> 或 ν<sub>P</sub> 关联",["elastic constant","Poisson ratio","弹性系数","泊松比"],["应变","材料"],"C ν"),
+      V("6","6.3.3",189,"N<sub>QW</sub>, Γ<sub>QW</sub>","量子阱数与总限制因子","Number of wells and QW confinement factor","多量子阱通过增加阱数提高总光场重叠，但也改变载流子分配。","整数 / 1","Γ<sub>total</sub>≈ΣΓ<sub>well</sub>",["multiple quantum well","MQW","量子阱数"],["量子阱","激光器"],"N Γ"),
+      V("6","6.3.3",189,"B, C","双分子与俄歇复合系数","Bimolecular and Auger coefficients","用于量子阱阈值电流密度中的二阶辐射项和三阶非辐射项。","cm³·s⁻¹ / cm⁶·s⁻¹","R(N)=AN+BN²+CN³",["ABC model","Auger","复合系数"],["量子阱","复合"],"B C"),
+      V("6","6.3.4",190,"τ<sub>intra</sub>, τ<sub>inter</sub>","带内与级联跃迁弛豫时间","Intra-subband and inter-subband relaxation times","描述载流子在子带内热化和不同量子级之间跃迁的速度。","s / ps","速率 ∝ 1/τ",["relaxation time","intersubband","带内弛豫","级间跃迁"],["量子级联","动态"],"τ"),
+      V("6","6.4.1",193,"L<sub>x</sub>, L<sub>y</sub>, L<sub>z</sub>","三方向量子限制尺寸","Confinement dimensions","决定量子线或量子点在三个方向上的离散量子化能量。","nm","E∝n<sub>x</sub>²/L<sub>x</sub>²+n<sub>y</sub>²/L<sub>y</sub>²+n<sub>z</sub>²/L<sub>z</sub>²",["quantum dot size","quantum wire","限制尺寸"],["量子点","几何"],"L"),
+      V("6","6.4.1",193,"n<sub>x</sub>, n<sub>y</sub>, n<sub>z</sub>","三方向量子数","Quantum numbers in three directions","标记量子线/量子点离散能级的整数。","整数","n<sub>i</sub>=1,2,3,…",["quantum number","量子数","energy level"],["量子点","量子"] ,"n"),
+      V("6","6.4.1",193,"ρ<sub>1D</sub>, ρ<sub>0D</sub>","一维与零维态密度","One- and zero-dimensional DOS","量子线出现尖峰型一维态密度，量子点出现近似离散 δ 峰。","依维度","ρ<sub>1D</sub>∝1/√(E−E<sub>n</sub>); ρ<sub>0D</sub>∝δ(E−E<sub>n</sub>)",["1D DOS","0D DOS","量子线态密度","量子点态密度"],["态密度","低维量子"],"ρ"),
+      V("6","6.4.2",194,"h<sub>WL</sub>","浸润层厚度","Wetting-layer thickness","自组织量子点下方残留二维 InAs/InGaAs 薄层的厚度。","ML / nm","影响量子点供载与激发态",["wetting layer","浸润层","湿层"],["量子点","外延"],"h"),
+
+      V("7","7.2.1",205,"G<sub>s</sub>","SOA 单程功率增益","Single-pass SOA gain","光信号通过一次有源波导后的输出/输入功率比。","1 / dB","G<sub>s</sub>=exp[(Γg−α<sub>i</sub>)L]",["single pass gain","SOA gain","单程增益"],["SOA","增益"],"G"),
+      V("7","7.2.1",205,"R<sub>1</sub>, R<sub>2</sub>","SOA 两端剩余反射率","SOA facet residual reflectivities","决定 FP-SOA 的谐振纹波；TW-SOA 要求两端反射率尽量低。","1","R<sub>1</sub>,R<sub>2</sub>→0 时接近行波放大",["facet reflectivity","residual reflection","剩余反射率"],["SOA","反射"],"R"),
+      V("7","7.2.1",205,"Γ, g, α<sub>i</sub>, L","限制因子、材料增益、内损耗与长度","SOA modal-gain variables","四者决定 SOA 的净模增益和单程放大。","1 / cm⁻¹ / cm","lnG<sub>s</sub>=(Γg−α<sub>i</sub>)L",["modal gain","SOA length","净增益"],["SOA","增益"],"Γ g α L"),
+      V("7","7.2.1",206,"P<sub>sat</sub>","饱和输出功率","Saturation output power","受激发射明显消耗载流子并使增益下降时的输出功率尺度。","W / dBm","P<sub>sat</sub>∝hνA<sub>eff</sub>/(Γτ<sub>c</sub>)",["saturation output power","饱和功率"],["SOA","饱和"],"P"),
+      V("7","7.2.1",206,"A<sub>eff</sub>, τ<sub>c</sub>","有效模面积与载流子恢复时间","Effective mode area and carrier recovery time","决定单位光强造成的载流子耗尽和饱和能量。","cm² / s","E<sub>sat</sub>≈P<sub>sat</sub>τ<sub>c</sub>",["effective area","carrier recovery","恢复时间"],["SOA","动态"],"A τ"),
+      V("7","7.2.1",207,"I<sub>sat</sub>","饱和光强","Saturation intensity","使小信号增益下降到指定水平（常用 3 dB）的输入光强。","W·cm⁻²","g(I)≈g<sub>0</sub>/(1+I/I<sub>sat</sub>)",["saturation intensity","饱和光强"],["SOA","饱和"],"I"),
+      V("7","7.2.1",208,"ε<sub>g</sub>","增益压缩系数","Gain-compression coefficient","描述强光条件下有效增益随光子密度下降的程度。","cm³ / 依模型","g<sub>eff</sub>=g<sub>0</sub>/(1+ε<sub>g</sub>S)",["gain compression","增益压缩"],["SOA","非线性"],"ε"),
+      V("7","7.2.2",210,"NF","噪声指数","Noise figure","输入信噪比与输出信噪比之比，衡量放大器自身引入噪声。","dB","NF=10log<sub>10</sub>(SNR<sub>in</sub>/SNR<sub>out</sub>)",["noise figure","噪声系数","噪声指数"],["SOA","噪声"]),
+      V("7","7.2.2",210,"n<sub>sp</sub>","粒子数反转参数","Population-inversion parameter","由注入载流子浓度与透明浓度决定的噪声增强参数。","1","n<sub>sp</sub>≥1",["population inversion","spontaneous emission factor","反转参数"],["SOA","噪声"],"n"),
+      V("7","7.2.2",210,"P<sub>ASE</sub>, B<sub>o</sub>","ASE 功率与光学噪声带宽","ASE power and optical bandwidth","放大的自发辐射在接收带宽内形成主要光噪声。","W / Hz","P<sub>ASE</sub>≈2n<sub>sp</sub>hν(G−1)B<sub>o</sub>",["ASE","amplified spontaneous emission","自发辐射噪声"],["SOA","噪声"],"P B"),
+      V("7","7.2.2",210,"σ<sub>N</sub>²","光子数方差","Photon-number variance","量化散粒噪声及信号–ASE、ASE–ASE 拍频引起的随机起伏。","光子数²","σ²=⟨N²⟩−⟨N⟩²",["variance","shot noise","光子数方差","拍频噪声"],["SOA","噪声"],"σ"),
+      V("7","7.2.2",211,"η<sub>in</sub>, η<sub>out</sub>","输入与输出耦合效率","Input and output coupling efficiencies","芯片与外部光路之间实际耦合的功率比例，影响系统增益和噪声指数。","1","G<sub>system</sub>=η<sub>in</sub>G<sub>s</sub>η<sub>out</sub>",["coupling efficiency","输入耦合","输出耦合"],["SOA","耦合"],"η"),
+      V("7","7.3.2",216,"P<sub>pump</sub>, P<sub>probe</sub>","泵浦光与探测光功率","Pump and probe powers","XGM 中强泵浦信号改变载流子和增益，连续探测光被反相调制。","W / dBm","ΔG 由 P<sub>pump</sub> 引起并作用于 P<sub>probe</sub>",["pump probe","XGM","交叉增益调制"],["SOA","全光处理"],"P"),
+      V("7","7.3.2",217,"Δφ<sub>NL</sub>","非线性相移","Nonlinear phase shift","XPM 中载流子引起折射率变化，使两臂或两波之间产生相位差。","rad","Δφ=(2π/λ)ΔnL",["XPM","nonlinear phase","交叉相位调制"],["SOA","全光处理"],"φ"),
+      V("7","7.3.2",217,"P<sub>1</sub>, P<sub>2</sub>, Δφ","MZI 两臂功率与相位差","MZI arm powers and phase difference","两臂输出在耦合器处干涉，决定波长转换后的输出功率。","W / rad","P<sub>out</sub>∝P<sub>1</sub>+P<sub>2</sub>+2√(P<sub>1</sub>P<sub>2</sub>)cosΔφ",["Mach Zehnder","MZI","干涉仪","两臂相位"],["SOA","干涉"],"P φ"),
+
+      V("8","8.1",219,"λ","可见光波长","Visible-light wavelength","决定人眼感知颜色以及材料所需禁带宽度。","nm","E<sub>ph</sub>(eV)≈1240/λ(nm)",["visible wavelength","颜色","可见光"],["可见光","光子"],"λ"),
+      V("8","8.1",220,"d<sub>spot</sub>, NA","聚焦光斑直径与数值孔径","Focused spot diameter and numerical aperture","短波长和大数值孔径可得到更小光斑及更高存储密度。","m / 1","d<sub>spot</sub>≈0.82λ/NA",["spot diameter","numerical aperture","数值孔径","光斑直径"],["可见光","光学"],"d"),
+      V("8","8.1",220,"D<sub>bit</sub>","比特面密度","Bit areal density","单位盘片面积可存储的比特数，随聚焦光斑缩小而提高。","bit·m⁻²","D<sub>bit</sub>∝1/d<sub>spot</sub>²",["areal density","bit density","面密度"],["可见光","应用"],"D"),
+      V("8","8.2.1",223,"E<sub>gΓ</sub>, E<sub>gX</sub>, E<sub>gL</sub>","Γ、X、L 能谷带隙","Valley band gaps","比较直接 Γ 谷和间接 X/L 谷能量，判断材料是否适合高效发光。","eV","最小 E<sub>g</sub> 所在能谷决定直接/间接带隙",["Gamma X L","direct indirect","能谷带隙"],["材料","能带"],"E"),
+      V("8","8.2.1",223,"x, y","AlGaInP 等合金组分","Alloy composition fractions","调节材料带隙、晶格常数和发射颜色，同时满足衬底晶格匹配。","1","0≤x,y≤1",["AlGaInP","composition","合金组分"],["材料","外延"],"x y"),
+      V("8","8.2.3",227,"ρ<sub>s</sub>, J(y)","扩展层电阻率与横向电流分布","Spreading-layer resistivity and lateral current","透明扩展层用较低电阻率把注入电流在 LED 有源区内铺开。","Ω·cm / A·cm⁻²","电流均匀性受片电阻 ρ<sub>s</sub>/d 控制",["current spreading layer","电流扩展","transparent layer"],["LED","电流"],"ρ J"),
+      V("8","8.3.2",231,"E<sub>g</sub>(x), b","合金带隙与弯曲因子","Alloy band gap and bowing parameter","实际合金带隙偏离线性内插的程度由 b 描述。","eV","E<sub>g</sub>(x)=xE<sub>g,A</sub>+(1−x)E<sub>g,B</sub>−bx(1−x)",["bowing parameter","bandgap bowing","弯曲因子"],["材料","能带"],"E b"),
+      V("8","8.3.2",231,"a(x)","合金晶格常数","Alloy lattice constant","通常用 Vegard 定律随组分近似线性内插。","Å","a(x)≈xa<sub>A</sub>+(1−x)a<sub>B</sub>",["Vegard law","lattice constant","晶格常数"],["材料","外延"],"a"),
+      V("8","8.3.3",232,"η<sub>ext</sub>","外量子效率","External quantum efficiency","发射到器件外部的光子数与注入电子数之比。","1 / %","η<sub>ext</sub>=η<sub>inj</sub>η<sub>rad</sub>η<sub>extract</sub>",["external quantum efficiency","EQE","外量子效率"],["LED","效率"],"η"),
+      V("8","8.3.3",233,"P<sub>o</sub>, η<sub>wp</sub>","输出功率与总体效率","Optical output power and wall-plug efficiency","用于比较蓝/绿光器件在电注入下的实际输出和电光转换。","W / %","η<sub>wp</sub>=P<sub>o</sub>/(IV)",["output power","wall plug efficiency","总体效率"],["可见光","性能"],"P η"),
+
+      V("9","9.1",236,"α, δ<sub>pen</sub>","吸收系数与渗透深度","Absorption coefficient and penetration depth","光功率按指数规律衰减；渗透深度为功率降到 1/e 的传播距离。","cm⁻¹ / cm","I(z)=I<sub>0</sub>e<sup>−αz</sup>; δ<sub>pen</sub>=1/α",["absorption","penetration depth","吸收系数","渗透深度"],["吸收","光场"],"α δ"),
+      V("9","9.1.1",237,"B<sub>12</sub>","受激吸收跃迁系数","Stimulated-absorption coefficient","把光子密度与价带到导带的吸收跃迁速率联系起来。","依定义","B<sub>12</sub>=B<sub>21</sub>",["stimulated absorption","Einstein B","受激吸收"],["吸收","跃迁"],"B"),
+      V("9","9.1.1",238,"m<sub>r</sub>","带间吸收折合质量","Reduced mass for interband absorption","由电子和空穴有效质量共同决定直接吸收边的联合态密度。","kg / m₀","1/m<sub>r</sub>=1/m<sub>e</sub>*+1/m<sub>h</sub>*",["reduced mass","折合质量"],["吸收","载流子"],"m"),
+      V("9","9.1.1",239,"A<sub>d</sub>","直接跃迁吸收比例常数","Direct-transition absorption prefactor","包含矩阵元、折合质量和材料常数，设定吸收边强度。","依公式","α<sub>direct</sub>≈A<sub>d</sub>√(hν−E<sub>g</sub>)",["direct absorption","直接带隙吸收","prefactor"],["吸收","直接跃迁"],"A"),
+      V("9","9.1.2",241,"E<sub>ph</sub>, N<sub>ph</sub>","声子能量与声子占据数","Phonon energy and occupation","间接吸收需同时吸收或发射声子，概率受声子热占据控制。","eV / 1","N<sub>ph</sub>=1/[exp(E<sub>ph</sub>/k<sub>B</sub>T)−1]",["phonon absorption","phonon emission","声子占据"],["吸收","间接跃迁"],"E N"),
+      V("9","9.1.2",241,"α<sub>abs,ph</sub>, α<sub>em,ph</sub>","吸收声子与发射声子分量","Phonon-absorption and emission components","间接带隙总吸收由两条声子辅助通道相加。","cm⁻¹","α<sub>ind</sub>=α<sub>abs,ph</sub>+α<sub>em,ph</sub>",["indirect absorption","声子辅助吸收"],["吸收","间接跃迁"],"α"),
+      V("9","9.2.1",244,"r, R","电子–空穴相对坐标与激子质心坐标","Exciton relative and center-of-mass coordinates","把激子两体薛定谔方程分离成相对运动和整体平移。","m","r=r<sub>e</sub>−r<sub>h</sub>; R=(m<sub>e</sub>r<sub>e</sub>+m<sub>h</sub>r<sub>h</sub>)/M",["exciton coordinate","center of mass","激子质心"],["激子","量子"],"r R"),
+      V("9","9.2.1",244,"M, μ","激子总质量与折合质量","Exciton total and reduced masses","M 控制质心平移，μ 控制电子–空穴相对束缚。","kg","M=m<sub>e</sub>*+m<sub>h</sub>*; 1/μ=1/m<sub>e</sub>*+1/m<sub>h</sub>*",["exciton mass","reduced mass","激子质量"],["激子","载流子"],"M μ"),
+      V("9","9.2.1",244,"E<sub>X,n</sub>","第 n 个激子能级","Exciton energy level","位于带隙下方的离散束缚态能量，并叠加质心动能。","eV","E<sub>X,n</sub>≈E<sub>g</sub>−E<sub>b</sub>/n²+ℏ²K²/(2M)",["exciton level","激子能级","binding energy"],["激子","吸收"],"E"),
+      V("9","9.2.2",247,"α<sub>fc</sub>, N, τ<sub>s</sub>","自由载流子吸收、浓度与散射时间","Free-carrier absorption parameters","带内自由载流子吸收随浓度和波长平方增大，并受有效质量和散射时间影响。","cm⁻¹ / cm⁻³ / s","α<sub>fc</sub>∝Nλ²/(m*²τ<sub>s</sub>)",["free carrier absorption","FCA","自由载流子吸收"],["吸收","载流子"],"α N τ"),
+      V("9","9.2.3",249,"N<sub>A</sub>","受主杂质浓度","Acceptor concentration","杂质吸收强度和吸收边随受主浓度变化。","cm⁻³","α<sub>imp</sub> 常随 N<sub>A</sub> 增加",["impurity absorption","acceptor concentration","杂质吸收"],["吸收","杂质"],"N"),
+      V("9","9.3.2",250,"η","光探测量子效率","Photodetector quantum efficiency","产生并收集的电子–空穴对数与入射光子数之比。","1 / %","η=N<sub>e</sub>/N<sub>ph</sub>",["quantum efficiency","QE","量子效率"],["探测器","效率"],"η"),
+      V("9","9.3.2",251,"R<sub>f</sub>, d, α","表面反射率、吸收层厚度与吸收系数","Reflectivity, absorber thickness and absorption","三者决定有多少入射光真正被吸收并产生载流子。","1 / cm / cm⁻¹","η<sub>abs</sub>≈(1−R<sub>f</sub>)[1−e<sup>−αd</sup>]",["absorber thickness","front reflectivity","吸收效率"],["探测器","吸收"],"R d α"),
+      V("9","9.3.2",251,"ℜ","响应度 / 响应率","Responsivity","单位入射光功率产生的光电流。为避免与反射率 R 混淆，这里用 ℜ。","A·W⁻¹","ℜ=ηq/(hν)=ηqλ/(hc)",["responsivity","响应度","响应率","A/W"],["探测器","效率"],"R"),
+      V("9","9.3.2",252,"I<sub>d</sub>, i<sub>n</sub>","暗电流与噪声电流","Dark current and noise current","无光时的漏电流以及其散粒噪声限制探测灵敏度。","A / A·Hz⁻¹ᐟ²","i<sub>shot,rms</sub>=√(2qI<sub>d</sub>B)",["dark current","noise current","暗电流","散粒噪声"],["探测器","噪声"],"I i"),
+      V("9","9.3.2",252,"B<sub>n</sub>","等效噪声带宽","Equivalent noise bandwidth","把噪声功率谱积分成均方噪声的有效电带宽。","Hz","⟨i<sub>n</sub>²⟩∝B<sub>n</sub>",["noise bandwidth","等效噪声带宽"],["探测器","噪声"],"B"),
+      V("9","9.3.2",253,"f<sub>3dB</sub>","3 dB 响应带宽","3-dB response bandwidth","光探测响应下降到低频值 1/√2 时的频率。","Hz","f<sub>3dB</sub> 受渡越时间与 RC 共同限制",["bandwidth","cutoff frequency","截止频率","响应带宽"],["探测器","速度"],"f"),
+      V("9","9.4.2",254,"W<sub>i</sub>","PIN 本征区宽度","PIN intrinsic-region width","宽本征区提高吸收和耗尽电场覆盖，但增加载流子渡越时间。","μm","τ<sub>tr</sub>≈W<sub>i</sub>/v<sub>d</sub>",["PIN depletion width","intrinsic region","本征区"],["PIN","几何"],"W"),
+      V("9","9.4.2",255,"C<sub>j</sub>, R<sub>L</sub>, τ<sub>RC</sub>","结电容、负载电阻与 RC 时间常数","Junction capacitance, load and RC time","电路充放电速度对 PIN 高频带宽的限制。","F / Ω / s","τ<sub>RC</sub>≈(R<sub>s</sub>+R<sub>L</sub>)C<sub>j</sub>",["RC bandwidth","junction capacitance","负载电阻"],["PIN","速度"],"C R τ"),
+      V("9","9.4.2",255,"v<sub>d</sub>, τ<sub>tr</sub>","漂移速度与渡越时间","Drift velocity and transit time","光生载流子穿过耗尽区所需时间。","cm·s⁻¹ / s","τ<sub>tr</sub>=W<sub>i</sub>/v<sub>d</sub>",["transit time","drift velocity","渡越时间"],["PIN","速度"],"v τ"),
+      V("9","9.5.1",258,"α<sub>e</sub>, β<sub>h</sub>","电子与空穴碰撞电离系数","Electron and hole ionization coefficients","载流子在倍增区每单位长度产生新电子–空穴对的平均概率。","cm⁻¹","k<sub>A</sub>=β<sub>h</sub>/α<sub>e</sub>",["ionization coefficient","impact ionization","碰撞电离","离化率"],["APD","倍增"],"α β"),
+      V("9","9.5.3",262,"M","雪崩倍增因子","Avalanche multiplication factor","APD 倍增后平均光电流与初始光电流之比。","1","M=I<sub>mult</sub>/I<sub>primary</sub>",["avalanche gain","multiplication factor","倍增率"],["APD","倍增"],"M"),
+      V("9","9.5.2",262,"F(M)","过剩噪声因子","Excess-noise factor","描述随机雪崩倍增相对理想确定倍增增加的噪声。","1","F(M)=⟨M²⟩/⟨M⟩²",["excess noise factor","过剩噪声","APD noise"],["APD","噪声"],"F"),
+      V("9","9.5.2",262,"k<sub>A</sub>","电离系数比","Ionization-coefficient ratio","电子与空穴电离能力之比；越接近单载流子倍增，过剩噪声越低。","1","k<sub>A</sub>=β<sub>h</sub>/α<sub>e</sub>（电子注入约定）",["ionization ratio","k factor","电离系数比"],["APD","噪声"],"k"),
+      V("9","9.5.3",263,"V<sub>R</sub>, V<sub>B</sub>","反向偏压与击穿电压","Reverse bias and breakdown voltage","反向偏压接近击穿电压时 APD 倍增急剧增加。","V","经验上 M≈1/[1−(V<sub>R</sub>/V<sub>B</sub>)<sup>n</sup>]",["breakdown voltage","reverse bias","击穿电压"],["APD","电学"],"V"),
+      V("9","9.5.4",264,"M·B","增益–带宽积","Gain-bandwidth product","APD 倍增建立时间使高增益与高带宽不能同时无限提高。","Hz","M f<sub>3dB</sub>≈常数（一定范围）",["gain bandwidth product","增益带宽积"],["APD","速度"],"M B"),
+      V("9","9.6.3",267,"R<sub>F</sub>, α, d","调制区反射、吸收与长度","Modulator reflectivity, absorption and length","决定量子阱/电吸收调制器通态和断态的透射功率。","1 / cm⁻¹ / cm","T≈(1−R<sub>F</sub>)e<sup>−αd</sup>",["electroabsorption","modulator transmission","电吸收"],["EAM","吸收"],"R α d"),
+      V("9","9.6.3",268,"ER","消光比","Extinction ratio","调制器通态与断态输出光功率之比。","dB","ER=10log<sub>10</sub>(P<sub>on</sub>/P<sub>off</sub>)",["extinction ratio","消光比","on off"],["EAM","调制"]),
+      V("9","9.6.3",269,"C<sub>m</sub>, R<sub>s</sub>","EAM 结电容与串联电阻","EAM capacitance and series resistance","等效电路中限制电吸收调制器电带宽的主要参数。","F / Ω","f<sub>RC</sub>≈1/[2π(R<sub>s</sub>+R<sub>L</sub>)C<sub>m</sub>]",["EAM equivalent circuit","结电容","串联电阻"],["EAM","速度"],"C R"),
+      V("9","9.6.3",269,"Δα, Δn","吸收系数与折射率变化","Absorption and refractive-index changes","两者由 Kramers–Kronig 关系关联，并共同决定调制幅度与啁啾。","cm⁻¹ / 1","Δφ=(2π/λ)ΔnL",["Kramers Kronig","absorption index change","吸收变化","折射率变化"],["EAM","调制"],"α n"),
+      V("9","9.6.3",269,"α<sub>chirp</sub>","EAM 线宽增强 / 啁啾因子","EAM chirp parameter","吸收变化伴随折射率变化时，强度调制引起的动态频率偏移尺度。","1","α<sub>chirp</sub>∝Δn/Δα",["chirp parameter","啁啾因子","line enhancement"],["EAM","调制"],"α"),
+
+      V("10","10.3.3",281,"L<sub>D</sub>, D<sub>QWI</sub>, t","量子阱混合扩散长度、扩散系数与时间","QWI diffusion length, coefficient and time","量子阱无序/混合的空间尺度，控制带隙蓝移。","m / m²·s⁻¹ / s","L<sub>D</sub>≈√(D<sub>QWI</sub>t)",["QWI","quantum well intermixing","扩散长度","量子阱混合"],["集成","工艺"],"L D t"),
+      V("10","10.3.3",281,"ΔE<sub>g,QWI</sub>, Δλ<sub>PL</sub>","QWI 带隙变化与 PL 峰位移","Band-gap and PL shifts from QWI","混合使阱/垒组分互扩散，通常增加有效带隙并使 PL 峰蓝移。","eV / nm","ΔE<sub>g</sub>≈hc(1/λ<sub>after</sub>−1/λ<sub>before</sub>)",["PL blue shift","bandgap shift","蓝移"],["集成","工艺"],"E λ"),
+      V("10","10.4.1",283,"L<sub>eff</sub>, n<sub>eff</sub>, m","微环有效长度、有效折射率与模阶","Microring optical length, effective index and order","决定微环往返相位满足整数倍 2π 的谐振波长。","m / 1 / 整数","mλ<sub>m</sub>=n<sub>eff</sub>L<sub>eff</sub>",["microring resonance","ring resonator","微环谐振"],["微环","谐振"],"L n m"),
+      V("10","10.4.1",284,"t, κ","直通与交叉耦合系数","Through and cross coupling coefficients","定向耦合区中留在原波导和耦入微环的场振幅比例。","1","无损耦合器：|t|²+|κ|²=1",["through coupling","cross coupling","耦合系数"],["微环","耦合"],"t κ"),
+      V("10","10.4.1",284,"a, α<sub>r</sub>","微环环程透过系数与损耗","Round-trip amplitude transmission and loss","a 表示光绕环一周后的场幅保留比例。","1 / m⁻¹","a=exp(−α<sub>r</sub>L/2)",["round trip loss","ring transmission","环程损耗"],["微环","损耗"],"a α"),
+      V("10","10.4.1",284,"φ","微环环程相位","Round-trip phase","光在微环一周累积的传播相位，决定透射谱周期。","rad","φ=βL=2πn<sub>eff</sub>L/λ",["round trip phase","ring phase","环程相位"],["微环","相位"],"φ"),
+      V("10","10.4.1",285,"FSR","微环自由光谱范围","Microring free spectral range","相邻微环谐振峰之间的频率或波长间隔。","Hz / nm","FSR<sub>ν</sub>≈c/(n<sub>g</sub>L); FSR<sub>λ</sub>≈λ²/(n<sub>g</sub>L)",["free spectral range","自由光谱范围","微环间隔"],["微环","谐振"]),
+      V("10","10.4.1",285,"Q","微环品质因子","Microring quality factor","谐振频率与线宽之比，反映储能时间和共振选择性。","1","Q=λ<sub>0</sub>/Δλ=ω<sub>0</sub>τ<sub>ph</sub>",["quality factor","品质因子","microring Q"],["微环","谐振"],"Q"),
+      V("10","10.4.2",286,"ε(r), E(r)","光子晶体介电函数与电场","Photonic-crystal permittivity and field","周期介电函数使电磁场形成光子能带和光子禁带。","1 / V·m⁻¹","∇×[ε(r)<sup>−1</sup>∇×H]= (ω/c)²H",["photonic crystal","periodic dielectric","光子晶体"],["光子晶体","电磁"],"ε E"),
+      V("10","10.4.2",287,"a, k","光子晶体晶格常数与布洛赫波矢","Photonic-crystal lattice constant and Bloch vector","a 设定周期尺度，k 标记第一布里渊区中的光子态。","m / m⁻¹","E<sub>k</sub>(r)=u<sub>k</sub>(r)e<sup>ik·r</sup>",["photonic lattice","Bloch wave","晶格常数","光子波矢"],["光子晶体","能带"],"a k"),
+      V("10","10.4.2",287,"a/λ","归一化光子频率","Normalized photonic frequency","用晶格常数归一化波长，便于不同尺度光子晶体比较。","1","ωa/(2πc)=a/λ",["normalized frequency","归一化频率","photonic band"],["光子晶体","能带"],"λ"),
+      V("10","10.4.3",290,"ε<sub>d</sub>, ε<sub>m</sub>","介质与金属复介电常数","Dielectric and metal permittivities","金属–介质界面 SPP 色散和场限制的核心材料参数。","1","SPP 要求 Re(ε<sub>m</sub>)&lt;−ε<sub>d</sub>",["metal permittivity","dielectric permittivity","金属介电常数"],["SPP","材料"],"ε"),
+      V("10","10.4.3",291,"k<sub>0</sub>, β<sub>SPP</sub>","真空波矢与 SPP 传播常数","Free-space and SPP wave vectors","β<sub>SPP</sub> 同时决定界面方向的相位传播和传播损耗。","m⁻¹","β<sub>SPP</sub>=k<sub>0</sub>√[ε<sub>m</sub>ε<sub>d</sub>/(ε<sub>m</sub>+ε<sub>d</sub>)]",["surface plasmon polariton","SPP wavevector","等离激元"],["SPP","传播"],"k β"),
+      V("10","10.4.3",291,"ω<sub>p</sub>, n<sub>e</sub>, γ<sub>c</sub>","等离子频率、自由电子密度与碰撞率","Plasma frequency, electron density and damping","Drude 模型中决定金属介电函数的自由电子参数。","rad·s⁻¹ / m⁻³ / s⁻¹","ω<sub>p</sub>²=n<sub>e</sub>q²/(ε<sub>0</sub>m*)",["Drude model","plasma frequency","等离子频率"],["SPP","材料"],"ω n γ"),
+      V("10","10.4.3",292,"L<sub>SPP</sub>","SPP 传播长度","SPP propagation length","SPP 强度沿界面方向衰减到 1/e 的距离。","m / μm","L<sub>SPP</sub>=1/[2Im(β<sub>SPP</sub>)]",["propagation length","SPP loss","传播长度"],["SPP","损耗"],"L"),
+      V("10","10.4.3",292,"δ<sub>d</sub>, δ<sub>m</sub>","介质侧与金属侧趋肤深度","Dielectric and metal penetration depths","SPP 倏逝场分别进入介质和金属的 1/e 衰减长度。","m / nm","δ≈1/Re(κ<sub>z</sub>)",["skin depth","penetration depth","趋肤深度"],["SPP","模式"],"δ"),
+      V("10","10.4.4",295,"ε<sub>eff</sub>, μ<sub>eff</sub>","超材料有效介电常数与磁导率","Effective permittivity and permeability","亚波长单元的宏观等效电磁参数。","1","n<sub>eff</sub>²=ε<sub>eff</sub>μ<sub>eff</sub>",["metamaterial","effective medium","超材料"],["超材料","材料"],"ε μ"),
+      V("10","10.4.4",295,"n<sub>eff</sub>, Z<sub>eff</sub>","超材料有效折射率与阻抗","Effective index and impedance","决定相位传播方向以及与外部介质的匹配反射。","1 / Ω","n<sub>eff</sub>=±√(ε<sub>eff</sub>μ<sub>eff</sub>); Z<sub>eff</sub>∝√(μ<sub>eff</sub>/ε<sub>eff</sub>)",["negative index","impedance","负折射率","有效阻抗"],["超材料","传播"],"n Z"),
+      V("10","10.4.4",298,"Λ<sub>HCG</sub>, f<sub>fill</sub>","高对比度光栅周期与填充因子","HCG period and fill factor","亚波长高对比度光栅的几何参数，决定反射带和相位响应。","nm / 1","f<sub>fill</sub>=w/Λ<sub>HCG</sub>",["HCG","high contrast grating","填充因子"],["超表面","光栅"],"Λ f"),
+
+      V("A","A",306,"ψ(r,t)","波函数","Wavefunction","完整描述粒子量子态的复函数；其模平方给出概率密度。","m⁻³ᐟ²","P(r,t)=|ψ(r,t)|²",["wavefunction","波函数","psi"],["量子","基础"],"ψ"),
+      V("A","A",306,"Ĥ","哈密顿算符","Hamiltonian operator","系统总能量算符，由动能和势能组成。","J / eV","Ĥ=−ℏ²∇²/(2m)+V(r,t)",["Hamiltonian","哈密顿量"],["量子","基础"],"H"),
+      V("A","A",306,"V(r,t)","势能函数","Potential-energy function","描述粒子所在空间与时间相关的势场。","J / eV","Ĥψ = [T̂+V]ψ",["potential energy","势能函数"],["量子","基础"],"V"),
+      V("A","A",306,"|ψ|²","概率密度","Probability density","在给定位置发现粒子的单位体积概率。","m⁻³","∫|ψ|²dV=1",["probability density","概率密度","normalization"],["量子","基础"],"ψ"),
+      V("A","A",306,"Ô","物理量算符","Observable operator","可观测物理量在量子力学中的算符表示。","依物理量","⟨O⟩=∫ψ*ÔψdV",["operator","expectation value","算符","期望值"],["量子","基础"],"O"),
+      V("A","A",306,"r̂, p̂","位置与动量算符","Position and momentum operators","实空间表象中位置为坐标乘法，动量为梯度微分。","m / kg·m·s⁻¹","r̂=r; p̂=−iℏ∇",["momentum operator","position operator","位置算符","动量算符"],["量子","基础"],"r p"),
+      V("A","A",306,"E, k","自由粒子能量与波矢","Free-particle energy and wave vector","自由粒子平面波的能量–动量色散。","J / m⁻¹","E=ℏ²k²/(2m)",["free particle","dispersion","自由粒子"],["量子","能量"],"E k"),
+      V("A","A",306,"L<sub>w</sub>, V<sub>0</sub>","方势阱宽度与势垒高度","Square-well width and barrier height","决定有限深一维量子阱的束缚态数量和能量。","m / eV","E&lt;V<sub>0</sub> 为束缚态",["square well","potential well","方势阱"],["量子阱","几何"],"L V"),
+      V("A","A",307,"k, κ","阱内波数与势垒衰减常数","Well wavenumber and barrier decay constant","阱内波函数振荡，势垒区波函数按 κ 指数衰减。","m⁻¹","k=√(2m<sub>w</sub>E)/ℏ; κ=√[2m<sub>b</sub>(V<sub>0</sub>−E)]/ℏ",["decay constant","bound state","衰减常数"],["量子阱","波函数"],"k κ"),
+      V("A","A",309,"L<sub>eff</sub>","有效阱宽","Effective well width","把有限势垒中的波函数渗透等效成比物理阱宽更大的无限阱。","m","L<sub>eff</sub>≈L<sub>w</sub>+2/κ",["effective well width","有效阱宽","penetration"],["量子阱","近似"],"L"),
+
+      V("B","B",311,"R","晶格平移矢量","Lattice translation vector","由三个晶格基矢的整数线性组合构成，连接等价晶格点。","m","R=n<sub>1</sub>a<sub>1</sub>+n<sub>2</sub>a<sub>2</sub>+n<sub>3</sub>a<sub>3</sub>",["lattice vector","晶格矢量","translation"],["晶格","能带"],"R"),
+      V("B","B",311,"a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>","实空间晶格基矢","Direct-lattice primitive vectors","定义晶体原胞的三个基本平移方向。","m / Å","Ω<sub>0</sub>=a<sub>1</sub>·(a<sub>2</sub>×a<sub>3</sub>)",["primitive vector","基矢","原胞"],["晶格","基础"],"a"),
+      V("B","B",311,"V(r)","晶格周期势","Periodic crystal potential","共有化电子在晶格周期性电势中运动。","eV","V(r+R)=V(r)",["periodic potential","晶格周期势"],["晶格","能带"],"V"),
+      V("B","B",311,"ψ<sub>nk</sub>, u<sub>nk</sub>","布洛赫波与周期函数","Bloch wave and periodic part","布洛赫定理把电子波函数分解为平面波和晶格周期函数。","m⁻³ᐟ²","ψ<sub>nk</sub>(r)=u<sub>nk</sub>(r)e<sup>ik·r</sup>",["Bloch wave","Bloch function","布洛赫函数"],["晶格","能带"],"ψ u"),
+      V("B","B",311,"k","布洛赫波矢","Bloch wave vector","标记第一布里渊区中电子态并对应晶体准动量。","m⁻¹","p<sub>crystal</sub>=ℏk",["crystal momentum","Bloch vector","晶体动量"],["晶格","能带"],"k"),
+      V("B","B",311,"b<sub>1</sub>, b<sub>2</sub>, b<sub>3</sub>","倒格子基矢","Reciprocal-lattice primitive vectors","满足 a<sub>i</sub>·b<sub>j</sub>=2πδ<sub>ij</sub> 的倒空间基矢。","m⁻¹","a<sub>i</sub>·b<sub>j</sub>=2πδ<sub>ij</sub>",["reciprocal lattice","倒格子","reciprocal vector"],["晶格","能带"],"b"),
+      V("B","B",311,"G","倒格矢","Reciprocal-lattice vector","晶格周期函数傅里叶展开中的空间频率。","m⁻¹","G=h b<sub>1</sub>+k b<sub>2</sub>+l b<sub>3</sub>",["reciprocal vector","倒格矢","Fourier"],["晶格","能带"],"G"),
+      V("B","B",312,"Ω<sub>0</sub>","原胞体积","Primitive-cell volume","晶格一个原胞在实空间占据的体积。","m³","Ω<sub>0</sub>=a<sub>1</sub>·(a<sub>2</sub>×a<sub>3</sub>)",["unit cell volume","原胞体积"],["晶格","几何"],"Ω"),
+      V("B","B",312,"E<sub>n</sub>(k)","第 n 条电子能带","Electronic band dispersion","对每个 k 求薛定谔方程得到的离散本征值随波矢形成能带。","eV","n 为能带指标",["band structure","dispersion","电子能带"],["能带","电子"],"E n"),
+      V("B","B",313,"P<sub>nm</sub>","能带间动量矩阵元","Interband momentum matrix element","k·p 微扰中不同能带之间的耦合强度。","kg·m·s⁻¹","P<sub>nm</sub>=⟨u<sub>n0</sub>|p̂|u<sub>m0</sub>⟩",["k dot p","momentum matrix","动量矩阵元"],["能带","跃迁"],"P"),
+      V("B","B",313,"m*","有效质量","Effective mass","由能带曲率定义的等效惯性；带越弯，质量绝对值越小。","kg / m₀","1/m*=(1/ℏ²)d²E/dk²",["effective mass","band curvature","有效质量","能带曲率"],["能带","载流子"],"m")
+    ];
+
+    const AMBIGUOUS = {
+      "E":"能量 / 电场强度 / 本征值",
+      "H":"磁场强度 / 哈密顿量 / 阶跃函数",
+      "n":"折射率 / 电子浓度 / 模式或量子数",
+      "p":"空穴浓度 / 动量 / 模式指标",
+      "k":"波矢 / 玻尔兹曼常数下标 / APD 电离比",
+      "α":"吸收 / 损耗 / 电离 / 线宽增强",
+      "β":"传播常数 / 自发发射耦合 / 空穴电离",
+      "R":"反射率 / 复合率 / 电阻 / 响应度 / 坐标",
+      "Γ":"光场限制因子 / 统计或展宽语境",
+      "η":"量子效率 / 耦合效率 / 功率效率",
+      "τ":"载流子、光子、弛豫或 RC 时间",
+      "A":"矢量势 / 面积 / 爱因斯坦系数 / 常数",
+      "B":"磁感应 / 复合系数 / 爱因斯坦系数 / 带宽",
+      "C":"电容 / 俄歇系数 / 材料拟合常数",
+      "G":"增益 / 倒格矢 / 受激速率"
+    };
+
+    const CHAINS = {
+      jng: {label:"J → n → g", test:v => /电流密度|载流子浓度|材料增益|透明电流|透明载流子|微分增益/.test(v.name)},
+      eglambda: {label:"E<sub>g</sub> ↔ hν ↔ λ", test:v => /禁带宽度|光子能量|带隙波长|可见光波长|合金带隙/.test(v.name)},
+      waveguide: {label:"n<sub>eff</sub> → β → mode", test:v => /有效折射率|传播常数|模式阶数|模阶数|横向模场|纵模阶数/.test(v.name)},
+      responsivity: {label:"η → ℜ", test:v => /量子效率|响应度/.test(v.name)}
+    };
+    const state = { chapter: "1", scope: "all", query: "", chain: "", tag: "全部", conflictOnly: false };
+    const chapterNav = document.querySelector("#chapterNav");
+    const chapterHeader = document.querySelector("#chapterHeader");
+    const searchInput = document.querySelector("#searchInput");
+    const scopeButton = document.querySelector("#scopeButton");
+    const variableGrid = document.querySelector("#variableGrid");
+    const resultsCopy = document.querySelector("#resultsCopy");
+    const filterRow = document.querySelector("#filterRow");
+    const sectionJump = document.querySelector("#sectionJump");
+    const emptyState = document.querySelector("#emptyState");
+    const toast = document.querySelector("#toast");
+
+    const strip = value => String(value || "").replace(/<[^>]*>/g, " ");
+    const greek = {"α":" alpha ","β":" beta ","γ":" gamma ","δ":" delta ","ε":" epsilon ","η":" eta ","θ":" theta ","κ":" kappa ","λ":" lambda ","μ":" mu ","ν":" nu ","ρ":" rho ","σ":" sigma ","τ":" tau ","φ":" phi ","χ":" chi ","ψ":" psi ","ω":" omega ","Γ":" gamma ","Δ":" delta ","Φ":" phi "};
+    function normalize(value) {
+      return strip(value).replace(/[αβγδεηθκλμνρστφχψωΓΔΦ]/g, c => greek[c] || c)
+        .replace(/[₀₁₂₃₄₅₆₇₈₉]/g, c => "0123456789"["₀₁₂₃₄₅₆₇₈₉".indexOf(c)])
+        .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, c => "0123456789"["⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(c)])
+        .toLowerCase().replace(/[→↔=()\[\],;:·/\\|−–—_²³√∂∇]/g, " ").replace(/\s+/g, " ").trim();
+    }
+    function searchable(v) {
+      return normalize([v.symbol,v.name,v.english,v.definition,v.unit,v.relation,(v.aliases||[]).join(" "),(v.tags||[]).join(" "),v.section,"第"+v.chapter+"章",v.note].join(" "));
+    }
+    VARIABLES.forEach((v, i) => {
+      v._i=i; v._search=searchable(v); v._plainSymbol=strip(v.symbol).trim();
+      v._exact = [v.symbol, ...(v.aliases||[]), ...(v.tags||[])].map(x=>normalize(x).replace(/\s+/g,""));
+    });
+
+    function currentChapter() { return CHAPTERS.find(c => c.id === state.chapter) || CHAPTERS[2]; }
+    function chapterVariables(id) { return id === "all" ? VARIABLES : VARIABLES.filter(v => v.chapter === id); }
+    function hasConflict(v) {
+      if (v.conflict) return true;
+      return Object.keys(AMBIGUOUS).some(key => strip(v.symbol).includes(key));
+    }
+    function inBaseScope(v) {
+      const inScope = !state.query ? (state.chapter === "all" || v.chapter === state.chapter) : (state.scope === "all" || state.chapter === "all" || v.chapter === state.chapter);
+      if (!inScope) return false;
+      if (state.tag !== "全部" && !v.tags.includes(state.tag)) return false;
+      if (state.conflictOnly && !hasConflict(v)) return false;
+      return true;
+    }
+    function textMatches(v) {
+      const tokens = normalize(state.query).split(" ").filter(Boolean);
+      return tokens.every(t => v._search.includes(t));
+    }
+    function visibleVariables() {
+      const candidates = VARIABLES.filter(inBaseScope);
+      if (state.chain && CHAINS[state.chain]) return candidates.filter(CHAINS[state.chain].test);
+      if (!state.query) return candidates;
+      const compact = normalize(state.query).replace(/\s+/g,"");
+      if (/^[a-z0-9]+$/.test(compact) && compact.length >= 2 && compact.length <= 8) {
+        const exact = candidates.filter(v => v._exact.some(x => x === compact || x.startsWith(compact)));
+        if (exact.length) return exact;
+      }
+      return candidates.filter(textMatches);
+    }
+    function esc(value) { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+    function highlight(text) {
+      if (!state.query) return esc(text);
+      const rawTokens = state.query.trim().split(/\s+/).filter(t => t.length > 1).slice(0,4);
+      let safe = esc(text);
+      rawTokens.forEach(token => {
+        const clean = esc(token).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+        if (clean) safe = safe.replace(new RegExp(`(${clean})`,`ig`),"<mark>$1</mark>");
+      });
+      return safe;
+    }
+    function locationLabel(v) {
+      if (!v.page) return v.section;
+      return `§${v.section} · 书 P${v.page} · PDF P${v.page+11}`;
+    }
+    function conflictLabel(v) {
+      const key = Object.keys(AMBIGUOUS).find(k => strip(v.symbol).includes(k));
+      return key ? `${key}：${AMBIGUOUS[key]}` : (v.conflict || "同一符号在书中另有含义");
+    }
+
+    function renderNav() {
+      chapterNav.innerHTML = CHAPTERS.map(c => {
+        const count = chapterVariables(c.id).length;
+        return `<button class="chapter-button" type="button" data-chapter="${c.id}" ${c.id===state.chapter?'aria-current="page"':''}>
+          <span class="chapter-number">${c.short}</span><span class="chapter-title"><strong>${c.title}</strong><small>${c.range}</small></span><span class="chapter-count">${count}</span>
+        </button>`;
+      }).join("");
+    }
+
+    function renderHeader() {
+      const c = currentChapter();
+      const count = chapterVariables(c.id).length;
+      const sections = new Set(chapterVariables(c.id).map(v=>v.section)).size;
+      chapterHeader.innerHTML = `<div>
+        <p class="eyebrow">${c.id === "all" ? "VARIABLE ATLAS" : c.id === "common" ? "COMMON SYMBOLS" : c.id.length===1 || c.id.length===2 ? `CHAPTER ${c.id}` : `APPENDIX ${c.id}`}</p>
+        <h1 id="chapterTitle">${c.title}</h1>
+        <p class="chapter-summary">${c.summary}</p>
+        <div class="page-range">${c.range}${c.pdf ? ` · ${c.pdf}` : ""}</div>
+        <div class="stats-row"><span class="stat-chip"><b>${count}</b> 张变量卡</span><span class="stat-chip"><b>${sections}</b> 个定位小节</span><span class="stat-chip">全库 <b>${VARIABLES.length}</b> 张</span></div>
+      </div>
+      <div class="band-map" aria-hidden="true">
+        <svg viewBox="0 0 340 118">
+          <defs><linearGradient id="beam" x1="0" x2="1"><stop stop-color="#ffbe55"/><stop offset="1" stop-color="#ff788a"/></linearGradient></defs>
+          <path d="M12 26 C76 20 112 31 164 24 S263 15 328 24" fill="none" stroke="#68e4ff" stroke-width="3"/>
+          <path d="M12 90 C76 96 112 84 164 92 S263 100 328 92" fill="none" stroke="#9c91ff" stroke-width="3"/>
+          <path d="M170 80V40" stroke="url(#beam)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M164 47l6-10 6 10" fill="none" stroke="#ffbe55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="18" y="17" fill="#98aec4" font-size="12">Eᶜ / guided state</text><text x="18" y="112" fill="#98aec4" font-size="12">Eᵛ / lower state</text><text x="185" y="64" fill="#ffcf7c" font-size="12">hν</text>
+        </svg>
+        <div class="band-map-caption"><span>能量 / 模式</span><span>关系式索引</span></div>
+      </div>`;
+    }
+
+    function visibleTags() {
+      const pool = state.chapter === "all" ? VARIABLES : chapterVariables(state.chapter);
+      const counts = {};
+      pool.forEach(v => v.tags.forEach(t => counts[t]=(counts[t]||0)+1));
+      return Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,7).map(x=>x[0]);
+    }
+    function renderFilters() {
+      const tags = visibleTags();
+      if (state.tag !== "全部" && !tags.includes(state.tag)) state.tag="全部";
+      filterRow.innerHTML = ["全部",...tags].map(tag => `<button class="filter-button" type="button" data-tag="${tag}" aria-pressed="${state.tag===tag}">${tag}</button>`).join("") +
+        `<button class="filter-button conflict" type="button" data-conflict="true" aria-pressed="${state.conflictOnly}">一符多义</button>`;
+    }
+    function renderSections(list) {
+      if (state.query || state.chapter === "all") { sectionJump.innerHTML=""; return; }
+      const sections = [...new Set(list.map(v=>v.section))];
+      sectionJump.innerHTML = sections.map(s=>`<button type="button" data-section="${s}">§ ${s}</button>`).join("");
+    }
+    function renderCards() {
+      const list = visibleVariables();
+      const c = currentChapter();
+      const scopeText = state.query ? (state.scope === "all" || state.chapter === "all" ? "全书" : c.title) : c.title;
+      resultsCopy.innerHTML = `${scopeText} · 找到 <b>${list.length}</b> 个变量${state.query ? `，关键词“${esc(state.query)}”` : ""}`;
+      renderSections(list);
+      variableGrid.innerHTML = list.map(v => {
+        const ambiguous = hasConflict(v);
+        const chapter = CHAPTERS.find(c=>c.id===v.chapter);
+        return `<article class="variable-card" id="var-${v._i}" data-section="${v.section}">
+          <div class="card-top"><div class="symbol">${v.symbol}</div><div class="variable-title">
+            <h2>${highlight(v.name)}</h2><p>${highlight(v.english)}</p>
+            <div class="badges">${v.tags.slice(0,3).map(t=>`<span class="badge">${t}</span>`).join("")}${ambiguous?`<span class="badge ambiguous" title="${esc(conflictLabel(v))}">一符多义</span>`:""}</div>
+          </div></div>
+          <p class="definition">${highlight(v.definition)}${v.note?` <span title="补充说明">${highlight(v.note)}</span>`:""}</p>
+          ${v.relation?`<div class="relation">${v.relation}</div>`:""}
+          <div class="card-footer"><span class="location">${chapter && state.chapter==="all" ? `${chapter.short} · ` : ""}${locationLabel(v)}</span><span class="unit">${esc(v.unit||"无量纲")}</span></div>
+        </article>`;
+      }).join("");
+      emptyState.style.display = list.length ? "none" : "block";
+      variableGrid.style.display = list.length ? "grid" : "none";
+    }
+    function renderAll({scroll=false}={}) {
+      renderNav(); renderHeader(); renderFilters(); renderCards();
+      scopeButton.dataset.scope=state.scope;
+      scopeButton.textContent=state.scope==="all"?"全书搜索":"当前章节";
+      if (scroll) document.querySelector("#mainContent").scrollIntoView({behavior:"smooth",block:"start"});
+      updateHash();
+    }
+    function updateHash() {
+      const params = new URLSearchParams();
+      params.set("chapter",state.chapter);
+      if (state.query) params.set("q",strip(state.query));
+      if (state.chain) params.set("chain",state.chain);
+      if (state.scope!=="all") params.set("scope",state.scope);
+      history.replaceState(null,"",`#${params.toString()}`);
+    }
+    function readHash() {
+      const raw = location.hash.slice(1); if (!raw) return;
+      const params = new URLSearchParams(raw);
+      const chapter=params.get("chapter"); if (CHAPTERS.some(c=>c.id===chapter)) state.chapter=chapter;
+      state.chain=CHAINS[params.get("chain")] ? params.get("chain") : "";
+      state.query=state.chain ? CHAINS[state.chain].label : (params.get("q")||""); searchInput.value=strip(state.query);
+      if (params.get("scope")==="chapter") state.scope="chapter";
+    }
+    function showToast(message) {
+      toast.textContent=message; toast.classList.add("show");
+      clearTimeout(showToast.timer); showToast.timer=setTimeout(()=>toast.classList.remove("show"),1800);
+    }
+    function closeNav() { document.body.classList.remove("nav-open"); document.querySelector("#menuButton").setAttribute("aria-expanded","false"); }
+
+    chapterNav.addEventListener("click", e => {
+      const b=e.target.closest("[data-chapter]"); if(!b) return;
+      state.chapter=b.dataset.chapter; state.tag="全部"; state.conflictOnly=false;
+      renderAll({scroll:true}); closeNav();
+    });
+    let searchTimer;
+    searchInput.addEventListener("input", e => {
+      clearTimeout(searchTimer); searchTimer=setTimeout(()=>{state.chain=""; state.query=e.target.value.trim(); state.tag="全部"; renderFilters(); renderCards(); updateHash();},90);
+    });
+    scopeButton.addEventListener("click",()=>{state.scope=state.scope==="all"?"chapter":"all"; renderAll(); showToast(state.scope==="all"?"搜索范围：全书":"搜索范围：当前章节");});
+    filterRow.addEventListener("click",e=>{
+      const tag=e.target.closest("[data-tag]"); const conflict=e.target.closest("[data-conflict]");
+      if(tag){state.tag=tag.dataset.tag;} if(conflict){state.conflictOnly=!state.conflictOnly;}
+      renderFilters(); renderCards();
+    });
+    sectionJump.addEventListener("click",e=>{
+      const b=e.target.closest("[data-section]"); if(!b) return;
+      const target=variableGrid.querySelector(`[data-section="${CSS.escape(b.dataset.section)}"]`); if(target) target.scrollIntoView({behavior:"smooth",block:"start"});
+    });
+    document.querySelectorAll("[data-chain]").forEach(b=>b.addEventListener("click",()=>{state.chain=b.dataset.chain; state.query=CHAINS[state.chain].label; searchInput.value=strip(state.query); state.scope="all"; state.tag="全部"; renderAll(); searchInput.focus();}));
+    document.querySelector("#clearSearch").addEventListener("click",()=>{state.chain=""; state.query=""; searchInput.value=""; state.tag="全部"; state.conflictOnly=false; renderAll(); searchInput.focus();});
+    document.querySelector("#focusSearch").addEventListener("click",()=>searchInput.focus());
+    document.querySelector("#menuButton").addEventListener("click",e=>{const open=document.body.classList.toggle("nav-open"); e.currentTarget.setAttribute("aria-expanded",String(open));});
+    document.querySelector("#drawerScrim").addEventListener("click",closeNav);
+    document.addEventListener("keydown",e=>{
+      if(e.key==="/" && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();searchInput.focus();}
+      if(e.key==="Escape"){ if(document.activeElement===searchInput && searchInput.value){searchInput.value="";state.chain="";state.query="";renderAll();} else {closeNav();searchInput.blur();} }
+    });
+    window.addEventListener("hashchange",()=>{readHash();renderAll();});
+
+    readHash();
+    renderAll();
+  </script>
+</body>
+</html>
