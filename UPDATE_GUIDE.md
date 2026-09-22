@@ -44,7 +44,7 @@ const CHAPTERS = [
 
 章节对象包含 `id`、`short`、`title`、`range`、`pdf` 和 `summary`。如果扫描 PDF 的前置页数改变，需同步更新 `pdf` 页码范围及侧栏的页码说明。
 
-## 3. 校验与发布
+## 3. 校验与提交
 
 ```bash
 node scripts/validate-site.mjs
@@ -53,4 +53,4 @@ git commit -m "更新变量索引"
 git push
 ```
 
-推送到 `main` 后，`.github/workflows/pages.yml` 会检查网页结构和变量数量，并自动部署 `docs/`。仓库当前不包含教材 PDF，发布内容也始终限定在 `docs/`。
+推送到 `main` 后，`.github/workflows/pages.yml` 会自动检查网页结构、章节数量和变量数量。仓库当前保持私有且不包含教材 PDF，因此不会进行 GitHub Pages 公开部署；以后如将仓库改为公开，可再启用 Pages。
