@@ -5,7 +5,7 @@
 - 按章节浏览变量、定义、单位、主要关系式与书中页码
 - 按符号、中文、英文、公式、标签或器件缩写进行全书搜索
 - 识别同一符号在不同章节中的不同含义
-- 通过 GitHub Pages 自动发布，后续更新只需提交到 `main` 分支
+- 提交到 `main` 分支后自动检查章节、变量数据和网页结构
 
 ## 目录
 
@@ -17,7 +17,7 @@
 ├── scripts/
 │   └── validate-site.mjs   # 更新前检查网页和变量数据
 ├── .github/workflows/
-│   └── pages.yml           # 自动校验并部署 GitHub Pages
+│   └── pages.yml           # 每次更新时自动校验网页
 └── UPDATE_GUIDE.md         # 后续更新说明
 ```
 
@@ -33,8 +33,10 @@
 node scripts/validate-site.mjs
 ```
 
-然后提交并推送到 `main`。工作流会自动校验并重新部署网页。详细字段说明见 [UPDATE_GUIDE.md](UPDATE_GUIDE.md)。
+然后提交并推送到 `main`。工作流会自动校验网页；详细字段说明见 [UPDATE_GUIDE.md](UPDATE_GUIDE.md)。
+
+当前仓库保持私有。此 GitHub 账户的免费 Pages 只支持公开仓库，因此目前不生成公开网址；如以后把仓库改为公开，可再启用 GitHub Pages 自动部署。
 
 ## 当前仓库范围
 
-当前提交只包含网页、更新说明、校验脚本和 GitHub Pages 工作流，不包含教材 PDF。后续如需自行加入教材文件，可单独创建 `book/` 目录；GitHub Pages 工作流始终只发布 `docs/`。
+当前提交只包含网页、更新说明和自动校验脚本，不包含教材 PDF。后续如需自行加入教材文件，可单独创建 `book/` 目录。
